@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "create:railway_casing"
+    },
+    "E": {
+      "item": "create:electron_tube"
+    }
+  },
+  "pattern": [
+    "ECE"
+  ],
+  "result": {
+    "count": 4,
+    "item": "expandingtechnologies:railroad_light_controller"
+  }
+}

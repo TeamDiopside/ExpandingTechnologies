@@ -1,7 +1,6 @@
-package nl.teamdiopside.expandingtechnologies.data;
+package nl.teamdiopside.expandingtechnologies.fabric.data;
 
 import com.google.gson.JsonElement;
-import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.foundation.data.LangPartial;
 import com.simibubi.create.foundation.utility.Lang;
 import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;

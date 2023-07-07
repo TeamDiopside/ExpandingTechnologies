@@ -34,7 +34,7 @@ public class ETUtil {
      * Creative Mode Tab
      */
 
-    public static final CreativeModeTab ExpandingTechnologiesTab = new CreativeModeTab(nextTabId(), "expandingTechnologiesTab")
+    public static final CreativeModeTab EXPANDING_TECHNOLOGIES_TAB = new CreativeModeTab(nextTabId(), "expandingtechnologiestab")
     {
         @Override
         public ItemStack makeIcon()

@@ -14,7 +14,7 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "nl.teamdiopside.expandingtechnologies.fabric.ETData"
+      "nl.teamdiopside.expandingtechnologies.fabric.data.ETData"
     ],
     "main": [
       "nl.teamdiopside.expandingtechnologies.fabric.ExpandingTechnologiesFabric"
