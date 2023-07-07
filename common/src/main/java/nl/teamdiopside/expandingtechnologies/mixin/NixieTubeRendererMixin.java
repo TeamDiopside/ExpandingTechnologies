@@ -28,7 +28,7 @@ public class NixieTubeRendererMixin {
     public NixieTubeRendererMixin() {}
 
     @Inject(method = {"renderSafe(Lcom/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V"}, at = @At(value = "INVOKE", target = "Lcom/jozufozu/flywheel/util/transform/TransformStack;unCentre()Ljava/lang/Object;", shift = At.Shift.AFTER))
-    private void lgw$renderSafe(NixieTubeBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay, CallbackInfo ci) {
+    private void et$renderSafe(NixieTubeBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay, CallbackInfo ci) {
         if (Objects.equals(be.getFullText().getString(), "x§") || Objects.equals(be.getFullText().getString(), "§x") || Objects.equals(be.getFullText().getString(), "§§")) {
             renderAsLight(be, ms, buffer, light, be.getFullText().getString());
         }

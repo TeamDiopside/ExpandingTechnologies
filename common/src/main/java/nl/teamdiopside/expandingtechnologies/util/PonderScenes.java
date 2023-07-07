@@ -28,6 +28,7 @@ public class PonderScenes {
 
         Selection lever = util.select.fromTo(3, 1, 0, 3, 1, 1);
         BlockPos railroadLights = util.grid.at(3, 1,  2);
+        BlockPos noteBlock = util.grid.at(3, 2,  2);
         BlockPos displayLink = util.grid.at(2, 1,  2);
         BlockPos nixie = util.grid.at(1, 1,  3);
 
@@ -59,7 +60,7 @@ public class PonderScenes {
         scene.world.showSection(lever, Direction.SOUTH);
 
         scene.overlay.showText(75)
-                .text("Then, just power the block with redstone to turn the lights on.")
+                .text("Then, just power the block with Redstone to turn the lights on.")
                 .attachKeyFrame()
                 .pointAt(util.vector.blockSurface(util.grid.at(3, 1,  0), Direction.WEST))
                 .placeNearTarget();
@@ -77,6 +78,16 @@ public class PonderScenes {
         scene.world.toggleRedstonePower(lever.add(util.select.position(railroadLights)));
         scene.effects.indicateRedstone(util.grid.at(3, 1, 0));
         ETUtil.nixieOff(scene, util, nixie, displayLink, railroadLights);
+        scene.idle(10);
+
+        scene.world.showSection(util.select.position(noteBlock), Direction.DOWN);
+
+        scene.overlay.showText(75)
+                .text("If you place a Note Block on top of the controller, a Dutch Railroad Bell will ring when turned on.")
+                .attachKeyFrame()
+                .pointAt(util.vector.blockSurface(noteBlock, Direction.WEST))
+                .placeNearTarget();
+        scene.idle(80);
 
         scene.markAsFinished();
     }
@@ -86,7 +97,7 @@ public class PonderScenes {
         // BasePlate size and offset from NW corner schematic
         scene.configureBasePlate(5, 0, 12);
         // Cam scale, zijn voorbeelden van in andere scenes op basis van size
-        scene.scaleSceneView(.65f);
+        scene.scaleSceneView(.6f);
         scene.showBasePlate();
         scene.idle(5);
 

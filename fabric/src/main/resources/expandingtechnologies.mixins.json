@@ -6,7 +6,9 @@
   "mixins": [
     "NixieTubeMixin",
     "NixieTubeRendererMixin",
-    "DisplayLinkMixin"
+    "DisplayLinkMixin",
+    "NoteBlockMixin",
+    "RedstoneMixin"
   ],
   "client": [
   ],

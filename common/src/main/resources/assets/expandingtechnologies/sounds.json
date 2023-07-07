@@ -1,0 +1,8 @@
+{
+  "crossing_bell": {
+    "subtitle": "subtitles.block.railroad_light_controller.crossing_bell",
+    "sounds": [
+      "expandingtechnologies:crossing_bell"
+    ]
+  }
+}

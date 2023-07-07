@@ -12,6 +12,7 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
 
 import java.util.List;
@@ -32,7 +34,7 @@ public class ETUtil {
      * Creative Mode Tab
      */
 
-    public static final CreativeModeTab ExpandingTechnologies = new CreativeModeTab(nextTabId(), "expandingTechnologiesTab")
+    public static final CreativeModeTab ExpandingTechnologiesTab = new CreativeModeTab(nextTabId(), "expandingTechnologiesTab")
     {
         @Override
         public ItemStack makeIcon()
@@ -44,6 +46,14 @@ public class ETUtil {
     @ExpectPlatform
     public static int nextTabId() {
         throw new AssertionError();
+    }
+
+    /**
+     * Registry
+     */
+
+    public static ResourceLocation resourceLocation(String name) {
+        return new ResourceLocation(ExpandingTechnologies.MODID, name);
     }
 
     /**

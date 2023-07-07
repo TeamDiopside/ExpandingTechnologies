@@ -21,7 +21,7 @@ public class NixieTubeMixin {
     public NixieTubeMixin() {}
 
     @Inject(method = {"use"}, at = {@At("HEAD")}, cancellable = true)
-    private void lgw$use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray, CallbackInfoReturnable<InteractionResult> cir) {
+    private void et$use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray, CallbackInfoReturnable<InteractionResult> cir) {
         String help = ((NixieTubeBlockEntity) Objects.requireNonNull(world.getBlockEntity(pos))).getFullText().getString();
         if (help.equals("x§") || help.equals("§x") || help.equals("§§")) {
             cir.setReturnValue(InteractionResult.PASS);

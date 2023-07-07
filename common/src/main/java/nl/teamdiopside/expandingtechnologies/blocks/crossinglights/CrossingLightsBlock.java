@@ -19,11 +19,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlockEntities;
-import org.jetbrains.annotations.Nullable;
+import nl.teamdiopside.expandingtechnologies.util.RedstoneConnectable;
 
 import java.util.Objects;
 
-public class CrossingLightsBlock extends HorizontalDirectionalBlock implements IBE<CrossingLightsBlockEntity>, IWrenchable {
+public class CrossingLightsBlock extends HorizontalDirectionalBlock implements IBE<CrossingLightsBlockEntity>, IWrenchable, RedstoneConnectable {
 
     public static final IntegerProperty STATE = IntegerProperty.create("state", 0, 2);
 
@@ -99,5 +99,10 @@ public class CrossingLightsBlock extends HorizontalDirectionalBlock implements I
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(STATE, FACING);
+    }
+
+    @Override
+    public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+        return true;
     }
 }

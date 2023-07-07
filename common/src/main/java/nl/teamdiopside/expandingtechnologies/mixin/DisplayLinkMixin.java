@@ -15,7 +15,7 @@ public class DisplayLinkMixin {
     public DisplayLinkMixin() {}
 
     @Inject(method = {"shouldBePowered"}, at = {@At("RETURN")}, cancellable = true)
-    private void lgw$shouldBePowered(BlockState state, Level worldIn, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    private void et$shouldBePowered(BlockState state, Level worldIn, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         if (worldIn.getBlockState(pos.relative(state.getValue(DisplayLinkBlock.FACING).getOpposite())).getBlock() instanceof CrossingLightsBlock && worldIn.getBlockState(pos.relative(state.getValue(DisplayLinkBlock.FACING).getOpposite())).getValue(CrossingLightsBlock.STATE) == 0) {
             cir.setReturnValue(true);
         }

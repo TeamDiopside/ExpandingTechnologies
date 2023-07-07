@@ -3,6 +3,7 @@
   "expandingtechnologies.ponder.railroad_lights_instruction.text_1" : "The Railroad Light Controller can be used to make railroad crossings a little more beautiful.",
   "expandingtechnologies.ponder.railroad_lights_instruction.text_2" : "To use it, attach a Display Link targeted at Nixie Tubes.",
   "expandingtechnologies.ponder.railroad_lights_instruction.text_3" : "Then, just power the block with Redstone to turn the lights on.",
+  "expandingtechnologies.ponder.railroad_lights_instruction.text_4" : "If you place a Note Block on top of the controller, a Dutch Railroad Bell will ring when turned on.",
 
   "expandingtechnologies.ponder.railroad_lights_example.header" : "Railroad Light Controller Example",
   "expandingtechnologies.ponder.railroad_lights_example.text_1" : "You can use Train Observers to detect upcoming trains.",
