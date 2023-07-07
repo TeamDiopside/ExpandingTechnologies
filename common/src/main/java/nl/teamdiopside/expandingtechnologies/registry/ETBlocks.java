@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.registry;
+package nl.teamdiopside.expandingtechnologies.registry;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
@@ -6,10 +6,10 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
-import nl.curryducker.expandingtechnologies.ExpandingTechnologies;
-import nl.curryducker.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
-import nl.curryducker.expandingtechnologies.blocks.crossinglights.LightDisplaySource;
-import nl.curryducker.expandingtechnologies.util.ETUtil;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
+import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
+import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.LightDisplaySource;
+import nl.teamdiopside.expandingtechnologies.util.ETUtil;
 
 import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.AssetLookup.partialBaseModel;

@@ -1,9 +1,9 @@
-package nl.curryducker.expandingtechnologies.registry;
+package nl.teamdiopside.expandingtechnologies.registry;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import nl.curryducker.expandingtechnologies.ExpandingTechnologies;
-import nl.curryducker.expandingtechnologies.blocks.crossinglights.CrossingLightsBlockEntity;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
+import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlockEntity;
 
 public class ETBlockEntities {
     private static final CreateRegistrate REGISTRATE = ExpandingTechnologies.registrate();

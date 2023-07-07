@@ -1,9 +1,8 @@
-package nl.curryducker.expandingtechnologies.mixin;
+package nl.teamdiopside.expandingtechnologies.mixin;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllPartialModels;
-import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlock;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
@@ -14,11 +13,15 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
+
+import static com.simibubi.create.content.redstone.nixieTube.DoubleFaceAttachedBlock.FACE;
+import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 
 @Mixin(value = {NixieTubeRenderer.class}, remap = false)
 public class NixieTubeRendererMixin {
@@ -33,7 +36,7 @@ public class NixieTubeRendererMixin {
 
     private void renderAsLight(NixieTubeBlockEntity be, PoseStack ms, MultiBufferSource buffer, int light, String parsedText) {
         BlockState blockState = be.getBlockState();
-        Direction facing = NixieTubeBlock.getFacing(blockState);
+        Direction facing = facing(blockState);
         assert Minecraft.getInstance().cameraEntity != null;
         TransformStack msr = TransformStack.cast(ms);
 
@@ -66,6 +69,15 @@ public class NixieTubeRendererMixin {
         }
 
         ms.popPose();
+    }
+
+    @Unique
+    private Direction facing(BlockState pState) {
+        return switch (pState.getValue(FACE)) {
+            case CEILING -> Direction.DOWN;
+            case FLOOR -> Direction.UP;
+            default -> pState.getValue(FACING);
+        };
     }
 
     private void renderTube(PoseStack ms, MultiBufferSource buffer, BlockState blockState) {

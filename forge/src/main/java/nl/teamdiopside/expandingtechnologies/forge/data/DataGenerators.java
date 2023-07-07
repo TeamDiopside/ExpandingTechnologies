@@ -1,11 +1,11 @@
-package nl.teamdiopside.expandingtechnologies.data;
+package nl.teamdiopside.expandingtechnologies.forge.data;
 
 import com.simibubi.create.foundation.data.LangMerger;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import nl.curryducker.expandingtechnologies.ExpandingTechnologies;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 
 @Mod.EventBusSubscriber(modid = ExpandingTechnologies.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {

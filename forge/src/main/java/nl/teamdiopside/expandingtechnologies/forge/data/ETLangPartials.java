@@ -1,9 +1,9 @@
-package nl.teamdiopside.expandingtechnologies.data;
+package nl.teamdiopside.expandingtechnologies.forge.data;
 
 import com.google.gson.JsonElement;
 import com.simibubi.create.foundation.data.LangPartial;
 import com.simibubi.create.foundation.utility.Lang;
-import nl.curryducker.expandingtechnologies.ExpandingTechnologies;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 
 import java.util.function.Supplier;
 

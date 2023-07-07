@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.util;
+package nl.teamdiopside.expandingtechnologies.util;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.redstone.diodes.PoweredLatchBlock;
@@ -10,7 +10,6 @@ import com.simibubi.create.foundation.utility.Pointing;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.AABB;
-import org.spongepowered.asm.util.perf.Profiler;
 
 import java.util.List;
 

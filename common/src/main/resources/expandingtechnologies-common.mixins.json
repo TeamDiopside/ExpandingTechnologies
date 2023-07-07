@@ -1,9 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "nl.teamdiopside.expandingtechnologies.mixin.forge",
+  "package": "nl.teamdiopside.expandingtechnologies.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "NixieTubeMixin",
+    "NixieTubeRendererMixin",
+    "DisplayLinkMixin"
   ],
   "client": [
   ],

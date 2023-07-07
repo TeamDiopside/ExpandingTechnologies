@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.blocks.crossinglights;
+package nl.teamdiopside.expandingtechnologies.blocks.crossinglights;
 
 import com.simibubi.create.content.contraptions.ITransformableBlockEntity;
 import com.simibubi.create.content.contraptions.StructureTransform;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
-import static nl.curryducker.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock.STATE;
+import static nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock.STATE;
 
 public class CrossingLightsBlockEntity extends SmartBlockEntity implements ITransformableBlockEntity {
 

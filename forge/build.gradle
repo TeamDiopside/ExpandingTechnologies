@@ -14,10 +14,38 @@ configurations {
     developmentForge.extendsFrom common
 }
 
+repositories {
+    maven {
+        name 'Progwm16 maven'
+        url 'https://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        name 'tterrag maven'
+        url 'https://maven.tterrag.com'
+    }
+    maven {
+        url 'https://www.cursemaven.com'
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+
+    modImplementation("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
+    modImplementation("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
+    modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
+
+    modCompileOnly("curse.maven:create-steam-n-rails-688231:${steam_n_rails_id}")
+    modCompileOnly("curse.maven:create-extended-cogs-739973:${extended_cogs_id}")
+    modCompileOnly("curse.maven:create-extended-flywheels-663769:${extended_flywheels_id}")
+
+    //modCompileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    //modLocalRuntime("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

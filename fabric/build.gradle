@@ -7,6 +7,25 @@ architectury {
     fabric()
 }
 
+loom {
+    Project common = project(":common")
+    accessWidenerPath = common.loom.accessWidenerPath
+
+    runs {
+        datagen {
+            client()
+
+            name "Minecraft Data"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${common.file("src/generated/resources")}"
+            vmArg "-Dfabric-api.datagen.modid=expandingtechnologies"
+            vmArg "-Dporting_lib.datagen.existing_resources=${common.file("src/main/resources")}"
+
+            environmentVariable("DATAGEN", "TRUE")
+        }
+    }
+}
+
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
@@ -15,11 +34,63 @@ configurations {
     developmentFabric.extendsFrom common
 }
 
+repositories {
+    maven {
+        name 'Progwm16 maven'
+        url 'https://dvs1.progwml6.com/files/maven'
+    }
+    maven { url = "https://maven.terraformersmc.com/releases/" }
+    maven { url = "https://mvn.devos.one/snapshots/" }
+    maven { url = "https://jitpack.io/" }
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
+    maven {
+        name 'tterrag maven'
+        url 'https://maven.tterrag.com'
+    }
+    maven {
+        url 'https://www.cursemaven.com'
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven { // forge config api port
+        name = "Fuzs Mod Resources"
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+
+    modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_fabric_version}")
+
+    modApi "net.minecraftforge:forgeconfigapiport-fabric:4.2.9"
+
+    modImplementation("com.github.Chocohead:Fabric-ASM:v2.3") {
+        exclude (group: "net.fabricmc.fabric-api")
+    }
+    include "com.github.Chocohead:Fabric-ASM:v2.3"
+
+    modLocalRuntime("maven.modrinth:lazydfu:${lazydfu_version}")
+    modLocalRuntime("com.terraformersmc:modmenu:${modmenu_version}")
+
+    //modCompileOnly("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
+    //modLocalRuntime("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }

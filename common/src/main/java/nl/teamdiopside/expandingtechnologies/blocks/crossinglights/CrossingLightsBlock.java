@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.blocks.crossinglights;
+package nl.teamdiopside.expandingtechnologies.blocks.crossinglights;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.redstone.displayLink.DisplayLinkBlock;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import nl.curryducker.expandingtechnologies.registry.ETBlockEntities;
+import nl.teamdiopside.expandingtechnologies.registry.ETBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -69,11 +69,6 @@ public class CrossingLightsBlock extends HorizontalDirectionalBlock implements I
         } else if (pState.getValue(STATE) != 0 && !pLevel.hasNeighborSignal(pPos)) {
             pLevel.setBlock(pPos, pState.setValue(STATE, 0), 3);
         }
-    }
-
-    @Override
-    public boolean canConnectRedstone(BlockState state, BlockGetter level, BlockPos pos, @Nullable Direction direction) {
-        return true;
     }
 
     @Override

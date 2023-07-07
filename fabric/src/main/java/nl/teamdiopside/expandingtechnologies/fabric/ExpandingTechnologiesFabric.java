@@ -1,7 +1,7 @@
 package nl.teamdiopside.expandingtechnologies.fabric;
 
-import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import net.fabricmc.api.ModInitializer;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 
 public class ExpandingTechnologiesFabric implements ModInitializer {
     @Override

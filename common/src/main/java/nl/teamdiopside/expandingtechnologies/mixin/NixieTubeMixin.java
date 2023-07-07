@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.mixin;
+package nl.teamdiopside.expandingtechnologies.mixin;
 
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlock;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;

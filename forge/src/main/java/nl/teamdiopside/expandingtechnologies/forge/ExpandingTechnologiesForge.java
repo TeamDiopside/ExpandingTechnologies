@@ -1,15 +1,19 @@
 package nl.teamdiopside.expandingtechnologies.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 
-@Mod(ExpandingTechnologies.MOD_ID)
+@Mod(ExpandingTechnologies.MODID)
 public class ExpandingTechnologiesForge {
     public ExpandingTechnologiesForge() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
 		// Submit our event bus to let architectury register our content on the right time
-        EventBuses.registerModEventBus(ExpandingTechnologies.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+        EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
             ExpandingTechnologies.init();
+            ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
     }
 }

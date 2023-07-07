@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.blocks.crossinglights;
+package nl.teamdiopside.expandingtechnologies.blocks.crossinglights;
 
 import com.simibubi.create.content.redstone.displayLink.DisplayLinkContext;
 import com.simibubi.create.content.redstone.displayLink.source.SingleLineDisplaySource;

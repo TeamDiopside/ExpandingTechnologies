@@ -1,4 +1,4 @@
-package nl.curryducker.expandingtechnologies.util;
+package nl.teamdiopside.expandingtechnologies.util;
 
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;
@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
-import nl.curryducker.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
+import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
 
 import java.util.List;
 import java.util.function.Function;
@@ -31,7 +31,7 @@ public class ETUtil {
      * Creative Mode Tab
      */
 
-    public static final CreativeModeTab ExpandingTechnologies = new CreativeModeTab("expandingTechnologiesTab")
+    public static final CreativeModeTab ExpandingTechnologies = new CreativeModeTab(-1, "expandingTechnologiesTab")
     {
         @Override
         public ItemStack makeIcon()
