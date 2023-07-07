@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "expandingtechnologies",
+  "version": "${version}",
+
+  "name": "Expanding Technologies",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "All Rights Reserved",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": {},
+  "mixins": [
+    "expandingtechnologies.mixins.json",
+    "expandingtechnologies-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "minecraft": ">=1.19.2"
+  }
+}
