@@ -12,10 +12,19 @@
   "icon": "icon.png",
 
   "environment": "*",
-  "entrypoints": {},
+  "entrypoints": {
+    "fabric-datagen": [
+      "nl.teamdiopside.expandingtechnologies.fabric.ETData"
+    ],
+    "main": [
+      "nl.teamdiopside.expandingtechnologies.fabric.ExpandingTechnologiesFabric"
+    ],
+    "client": [
+      "nl.teamdiopside.expandingtechnologies.fabric.ETFabricClient"
+    ]
+  },
   "mixins": [
-    "expandingtechnologies.mixins.json",
-    "expandingtechnologies-common.mixins.json"
+    "expandingtechnologies.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.19",

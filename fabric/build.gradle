@@ -12,16 +12,15 @@ loom {
     accessWidenerPath = common.loom.accessWidenerPath
 
     runs {
-        datagen {
-            client()
-
-            name "Minecraft Data"
+        datagenClient {
+            inherit client
+            name "Data Generation"
             vmArg "-Dfabric-api.datagen"
             vmArg "-Dfabric-api.datagen.output-dir=${common.file("src/generated/resources")}"
             vmArg "-Dfabric-api.datagen.modid=expandingtechnologies"
             vmArg "-Dporting_lib.datagen.existing_resources=${common.file("src/main/resources")}"
 
-            environmentVariable("DATAGEN", "TRUE")
+            runDir "build/datagen"
         }
     }
 }
@@ -70,6 +69,14 @@ repositories {
     }
 }
 
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.module.name == "fabric-loader") {
+            useVersion(fabric_loader_version)
+        }
+    }
+}
+
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
 
@@ -105,6 +112,8 @@ processResources {
 }
 
 shadowJar {
+    exclude "architectury.common.json"
+
     configurations = [project.configurations.shadowCommon]
     archiveClassifier.set("dev-shadow")
 }

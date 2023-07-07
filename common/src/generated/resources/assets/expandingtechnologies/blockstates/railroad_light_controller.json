@@ -1,0 +1,61 @@
+{
+  "variants": {
+    "facing=east,state=0": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_0",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,state=1": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_1",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,state=2": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_2",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,state=0": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_0",
+      "uvlock": true
+    },
+    "facing=north,state=1": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_1",
+      "uvlock": true
+    },
+    "facing=north,state=2": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_2",
+      "uvlock": true
+    },
+    "facing=south,state=0": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_0",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,state=1": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_1",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,state=2": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_2",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,state=0": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_0",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,state=1": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_1",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,state=2": {
+      "model": "expandingtechnologies:block/railroad_light_controller/block_2",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}

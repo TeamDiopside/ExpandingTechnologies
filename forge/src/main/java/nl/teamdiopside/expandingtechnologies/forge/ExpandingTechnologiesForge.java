@@ -8,6 +8,7 @@ import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 
 @Mod(ExpandingTechnologies.MODID)
 public class ExpandingTechnologiesForge {
+
     public ExpandingTechnologiesForge() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 

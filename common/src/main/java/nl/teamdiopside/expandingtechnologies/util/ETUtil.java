@@ -10,6 +10,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -31,7 +32,7 @@ public class ETUtil {
      * Creative Mode Tab
      */
 
-    public static final CreativeModeTab ExpandingTechnologies = new CreativeModeTab(-1, "expandingTechnologiesTab")
+    public static final CreativeModeTab ExpandingTechnologies = new CreativeModeTab(nextTabId(), "expandingTechnologiesTab")
     {
         @Override
         public ItemStack makeIcon()
@@ -39,6 +40,11 @@ public class ETUtil {
             return new ItemStack(AllItems.WRENCH.get());
         }
     };
+
+    @ExpectPlatform
+    public static int nextTabId() {
+        throw new AssertionError();
+    }
 
     /**
      * Data Gen

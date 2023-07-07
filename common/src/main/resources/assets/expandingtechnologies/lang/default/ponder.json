@@ -6,5 +6,5 @@
 
   "expandingtechnologies.ponder.railroad_lights_example.header" : "Railroad Light Controller Example",
   "expandingtechnologies.ponder.railroad_lights_example.text_1" : "You can use Train Observers to detect upcoming trains.",
-  "expandingtechnologies.ponder.railroad_lights_example.text_2" : "Connect them to a Powered Toggle Latch using Redstone Links to power the block.",
+  "expandingtechnologies.ponder.railroad_lights_example.text_2" : "Connect them to a Powered Toggle Latch using Redstone Links to power the block."
 }

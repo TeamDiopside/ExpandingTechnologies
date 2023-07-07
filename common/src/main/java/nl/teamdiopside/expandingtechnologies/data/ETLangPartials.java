@@ -1,4 +1,4 @@
-package nl.teamdiopside.expandingtechnologies.forge.data;
+package nl.teamdiopside.expandingtechnologies.data;
 
 import com.google.gson.JsonElement;
 import com.simibubi.create.foundation.data.LangPartial;

@@ -7,5 +7,6 @@ public class ExpandingTechnologiesFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         ExpandingTechnologies.init();
+        ExpandingTechnologies.registrate().register();
     }
 }

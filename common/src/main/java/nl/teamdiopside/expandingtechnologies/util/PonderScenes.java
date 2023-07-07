@@ -148,7 +148,7 @@ public class PonderScenes {
 
         scene.overlay.showText(90)
                 .text("Connect them to a Powered Toggle Latch using Redstone Links to power the block.")
-                .pointAt(util.vector.blockSurface(util.grid.at(10, 1, 2), Direction.SOUTH))
+                .pointAt(util.vector.blockSurface(util.grid.at(11, 1, 2), Direction.SOUTH))
                 .placeNearTarget();
         scene.idle(100);
 
