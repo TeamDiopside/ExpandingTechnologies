@@ -23,7 +23,7 @@ import java.util.Objects;
 import static com.simibubi.create.content.redstone.nixieTube.DoubleFaceAttachedBlock.FACE;
 import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 
-@Mixin(value = {NixieTubeRenderer.class}, remap = false)
+@Mixin(value = {NixieTubeRenderer.class})
 public class NixieTubeRendererMixin {
     public NixieTubeRendererMixin() {}
 

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = {DisplayLinkBlock.class}, remap = false)
+@Mixin(value = {DisplayLinkBlock.class})
 public class DisplayLinkMixin {
     public DisplayLinkMixin() {}
 

@@ -1,6 +1,14 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
+
+loom {
+    forge {
+        mixinConfig("expandingtechnologies-common.mixins.json")
+        mixinConfig("expandingtechnologies.mixins.json")
+    }
+}
+
 architectury {
     platformSetupLoomIde()
     forge()

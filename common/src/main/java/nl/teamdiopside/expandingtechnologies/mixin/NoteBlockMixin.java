@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = {NoteBlock.class}, remap = false)
+@Mixin(value = {NoteBlock.class})
 public class NoteBlockMixin {
     public NoteBlockMixin() {}
 

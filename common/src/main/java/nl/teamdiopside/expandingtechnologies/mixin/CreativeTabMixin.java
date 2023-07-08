@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import java.util.Iterator;
 import java.util.Map;
 
-@Mixin(value = CreateCreativeModeTab.class, remap = false)
+@Mixin(value = CreateCreativeModeTab.class)
 public abstract class CreativeTabMixin {
 
     @Inject(method = "addBlocks", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/BlockItem;fillItemCategory(Lnet/minecraft/world/item/CreativeModeTab;Lnet/minecraft/core/NonNullList;)V", shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
