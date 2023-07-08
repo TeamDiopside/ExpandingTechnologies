@@ -1,6 +1,5 @@
 package nl.teamdiopside.expandingtechnologies.blocks.crossinglights;
 
-import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.content.contraptions.ITransformableBlockEntity;
 import com.simibubi.create.content.contraptions.StructureTransform;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
@@ -9,13 +8,11 @@ import com.simibubi.create.foundation.utility.Components;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import nl.teamdiopside.expandingtechnologies.registry.ETSounds;
-import nl.teamdiopside.expandingtechnologies.util.ETUtil;
 
 import java.util.List;
 import java.util.Objects;

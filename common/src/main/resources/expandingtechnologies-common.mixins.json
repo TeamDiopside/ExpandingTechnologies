@@ -4,12 +4,12 @@
   "package": "nl.teamdiopside.expandingtechnologies.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "CreativeTabMixin",
+    "DisplayLinkMixin",
     "NixieTubeMixin",
     "NixieTubeRendererMixin",
-    "DisplayLinkMixin",
     "NoteBlockMixin",
-    "RedstoneMixin",
-    "CreativeTabMixin"
+    "RedstoneMixin"
   ],
   "client": [
   ],
