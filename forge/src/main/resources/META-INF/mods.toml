@@ -71,3 +71,10 @@ Expanding Technologies is an addon that expands the Create mod with new features
    versionRange="[0.5.1.a,)"
    ordering="NONE"
    side="BOTH"
+[[dependencies.expandingtechnologies]]
+   modId="architectury"
+   mandatory=true
+   # This version range declares a minimum of the current minecraft version up to but not including the next major version
+   versionRange="[6.5.85,)"
+   ordering="NONE"
+   side="BOTH"
