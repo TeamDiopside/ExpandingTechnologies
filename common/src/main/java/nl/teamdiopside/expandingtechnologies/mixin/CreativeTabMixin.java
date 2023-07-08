@@ -4,6 +4,7 @@ import com.simibubi.create.infrastructure.item.CreateCreativeModeTab;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import nl.teamdiopside.expandingtechnologies.registry.ETItems;
@@ -17,14 +18,17 @@ import java.util.Iterator;
 import java.util.Map;
 
 @Mixin(value = CreateCreativeModeTab.class)
-public abstract class CreativeTabMixin {
+public abstract class CreativeTabMixin extends CreativeModeTab {
+    public CreativeTabMixin(int i, String string) {
+        super(i, string);
+    }
 
     @Inject(method = "addBlocks", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/BlockItem;fillItemCategory(Lnet/minecraft/world/item/CreativeModeTab;Lnet/minecraft/core/NonNullList;)V", shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
     private void et$addBlocks(NonNullList<ItemStack> items, CallbackInfo ci, Iterator var2, RegistryEntry<Item> entry, BlockItem blockItem, Object var5) {
         ETItems.addToTab();
         Map<Item, Item> toAdd = ETItems.getMap();
         if (toAdd.containsKey(blockItem)) {
-            items.add(new ItemStack(toAdd.get(blockItem)));
+            toAdd.get(blockItem).fillItemCategory(this, items);
         }
     }
 }
