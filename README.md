@@ -3,7 +3,7 @@
 
 ---
 
-##### The mod adds:
+### The mod adds:
 - Railroad Crossing Lights
 - _If you have a suggestion, please submit a [suggestion form](https://github.com/TeamDiopside/ExpandingTechnologies/issues)_
 
