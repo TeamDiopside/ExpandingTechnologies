@@ -1,6 +1,5 @@
 package nl.teamdiopside.expandingtechnologies.util;
 
-import com.simibubi.create.AllItems;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;
 import com.simibubi.create.foundation.ponder.SceneBuilder;
 import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
@@ -10,13 +9,10 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -29,24 +25,6 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ETUtil {
-
-    /**
-     * Creative Mode Tab
-     */
-
-    public static final CreativeModeTab EXPANDING_TECHNOLOGIES_TAB = new CreativeModeTab(nextTabId(), "expandingtechnologiestab")
-    {
-        @Override
-        public ItemStack makeIcon()
-        {
-            return new ItemStack(AllItems.WRENCH.get());
-        }
-    };
-
-    @ExpectPlatform
-    public static int nextTabId() {
-        throw new AssertionError();
-    }
 
     /**
      * Registry

@@ -4,9 +4,13 @@
   "version": "${version}",
 
   "name": "Expanding Technologies",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "Expanding Technologies is an addon that expands the Create mod with new features!",
+  "authors": ["curryducker", "Lars_Mans"],
+  "contact": {
+    "sources": "https://github.com/TeamDiopside/ExpandingTechnologies/",
+    "issues": "https://github.com/TeamDiopside/ExpandingTechnologies/issues",
+    "homepage": "https://teamdiopside.nl/expandingtechnologies"
+  },
 
   "license": "All Rights Reserved",
   "icon": "icon.png",
