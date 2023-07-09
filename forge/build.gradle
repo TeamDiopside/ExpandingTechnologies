@@ -48,7 +48,7 @@ dependencies {
     modImplementation("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    modCompileOnly("curse.maven:create-steam-n-rails-688231:${steam_n_rails_id}")
+    modCompileOnly("curse.maven:create-steam-n-rails-688231:${steam_n_rails_forge_id}")
     modCompileOnly("curse.maven:create-extended-cogs-739973:${extended_cogs_id}")
     modCompileOnly("curse.maven:create-extended-flywheels-663769:${extended_flywheels_id}")
 

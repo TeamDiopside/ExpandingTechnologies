@@ -93,6 +93,8 @@ dependencies {
     }
     include "com.github.Chocohead:Fabric-ASM:v2.3"
 
+    modCompileOnly("curse.maven:create-steam-n-rails-688231:${steam_n_rails_fabric_id}")
+
     modLocalRuntime("maven.modrinth:lazydfu:${lazydfu_version}")
     modLocalRuntime("com.terraformersmc:modmenu:${modmenu_version}")
 
