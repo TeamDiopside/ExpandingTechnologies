@@ -1,0 +1,46 @@
+name: Bug Report
+description: Tell us about your bug
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - LarsMans64,curryducker
+body:
+  - type: textarea
+    id: bug
+    attributes:
+      label: Bug
+      description: Tell us about your bug!
+      placeholder: 1. What happened?\n2. What did you expect to happen?\n3. How can we reproduce the bug?
+      value: "1. What happened?\n\n2. What did you expect to happen?\n\n3. How can we reproduce the bug?\n"
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: What version of the mod are you playing?
+      options:
+        - Fabric
+        - Forge
+    validations:
+      required: true
+  - type: dropdown
+    id: mc-version
+    attributes:
+      label: What version of Minecraft are you playing?
+      options:
+        - 1.19.2
+    validations:
+      required: true
+  - type: checkboxes
+    id: latest-version
+    attributes:
+      label: Latest version
+      options:
+        - label: I am running the latest version of the mod
+          required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: latest.log
+      description: Please give us a URL to your latest.log (we recommend uploading it to https://gist.github.com/)
+      placeholder: https://gist.github.com/<userid>/<gistid>
