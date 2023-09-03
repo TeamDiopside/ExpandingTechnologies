@@ -11,8 +11,10 @@ import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeB
 import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlocks;
 import nl.teamdiopside.expandingtechnologies.util.ETUtil;
@@ -21,13 +23,13 @@ import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
 public class ETRecipes extends FabricRecipeProvider {
-    public ETRecipes(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    public ETRecipes(FabricDataOutput fabricDataOutput) {
+        super(fabricDataOutput);
     }
 
     @Override
-    protected void generateRecipes(Consumer<FinishedRecipe> exporter) {
-        ShapedRecipeBuilder.shaped(ETBlocks.RAILROAD_LIGHT_CONTROLLER.get(), 4)
+    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ETBlocks.RAILROAD_LIGHT_CONTROLLER.get(), 4)
                 .define('E', AllItems.ELECTRON_TUBE.get())
                 .define('C', AllBlocks.RAILWAY_CASING.get())
                 .pattern("ECE")

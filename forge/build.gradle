@@ -51,8 +51,8 @@ dependencies {
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
     modCompileOnly("curse.maven:create-steam-n-rails-688231:${steam_n_rails_forge_id}")
-    modCompileOnly("curse.maven:create-extended-cogs-739973:${extended_cogs_id}")
-    modCompileOnly("curse.maven:create-extended-flywheels-663769:${extended_flywheels_id}")
+    //modCompileOnly("curse.maven:create-extended-cogs-739973:${extended_cogs_id}")
+    //modCompileOnly("curse.maven:create-extended-flywheels-663769:${extended_flywheels_id}")
 
     //modCompileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     //modLocalRuntime("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
@@ -64,11 +64,11 @@ dependencies {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "expandingtechnologies"
-    versionNumber = "${rootProject.mod_version}-forge-1.19.2"
-    versionName = "${rootProject.mod_version} Forge 1.19.2"
+    versionNumber = "${rootProject.mod_version}-forge-1.20.1"
+    versionName = "${rootProject.mod_version} Forge 1.20.1"
     versionType = "release"
     uploadFile = remapJar
-    gameVersions = ["1.19.2"]
+    gameVersions = ["1.20.1"]
     loaders = ["forge"]
     dependencies {
         required.project "architectury-api"
@@ -87,7 +87,7 @@ curseforge {
         changelog = rootProject.file("CHANGELOG_LATEST.md").text
         changelogType = "markdown"
         releaseType = "release"
-        addGameVersion "1.19.2"
+        addGameVersion "1.20.1"
         addGameVersion "Forge"
 
         relations {
@@ -95,7 +95,7 @@ curseforge {
             requiredDependency "create"
         }
         mainArtifact(remapJar) {
-            displayName = "${rootProject.mod_version} Forge 1.19.2"
+            displayName = "${rootProject.mod_version} Forge 1.20.1"
         }
         options {
             javaVersionAutoDetect = false

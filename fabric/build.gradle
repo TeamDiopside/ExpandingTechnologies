@@ -88,7 +88,7 @@ dependencies {
 
     modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_fabric_version}")
 
-    modApi "net.minecraftforge:forgeconfigapiport-fabric:4.2.9"
+    modApi "net.minecraftforge:forgeconfigapiport-fabric:${forge_config_api_port_version}"
 
     modImplementation("com.github.Chocohead:Fabric-ASM:v2.3") {
         exclude (group: "net.fabricmc.fabric-api")
@@ -110,11 +110,11 @@ dependencies {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "expandingtechnologies"
-    versionNumber = "${rootProject.mod_version}-fabric-1.19.2"
-    versionName = "${rootProject.mod_version} Fabric 1.19.2"
+    versionNumber = "${rootProject.mod_version}-fabric-1.20.1"
+    versionName = "${rootProject.mod_version} Fabric 1.20.1"
     versionType = "release"
     uploadFile = remapJar
-    gameVersions = ["1.19.2"]
+    gameVersions = ["1.20.1"]
     loaders = ["fabric"]
     dependencies {
         required.project "architectury-api"
@@ -134,7 +134,7 @@ curseforge {
         changelog = rootProject.file("CHANGELOG_LATEST.md").text
         changelogType = "markdown"
         releaseType = "release"
-        addGameVersion "1.19.2"
+        addGameVersion "1.20.1"
         addGameVersion "Fabric"
 
         relations {
@@ -143,7 +143,7 @@ curseforge {
             requiredDependency "create"
         }
         mainArtifact(remapJar) {
-            displayName = "${rootProject.mod_version} Fabric 1.19.2"
+            displayName = "${rootProject.mod_version} Fabric 1.20.1"
         }
         options {
             javaVersionAutoDetect = false

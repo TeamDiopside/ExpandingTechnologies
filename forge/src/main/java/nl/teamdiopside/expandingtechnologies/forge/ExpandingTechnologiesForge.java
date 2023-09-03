@@ -1,5 +1,6 @@
 package nl.teamdiopside.expandingtechnologies.forge;
 
+import com.simibubi.create.AllCreativeModeTabs;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -14,7 +15,9 @@ public class ExpandingTechnologiesForge {
 
 		// Submit our event bus to let architectury register our content on the right time
         EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
-            ExpandingTechnologies.init();
-            ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
+
+        ExpandingTechnologies.init();
+        ExpandingTechnologies.registrate().useCreativeTab(AllCreativeModeTabs.MAIN_TAB);
+        ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
     }
 }

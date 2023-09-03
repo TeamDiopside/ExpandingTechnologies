@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "C": {
       "item": "create:railway_casing"
@@ -14,5 +15,6 @@
   "result": {
     "count": 4,
     "item": "expandingtechnologies:railroad_light_controller"
-  }
+  },
+  "show_notification": true
 }

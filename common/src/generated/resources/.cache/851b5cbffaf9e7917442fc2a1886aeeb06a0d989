@@ -1,7 +1,7 @@
-// 1.19.2	2023-09-03T14:28:08.2563217	Registrate Provider for expandingtechnologies [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2023-09-03T18:44:09.9621093	Expanding Technologies/Registrate Provider for expandingtechnologies [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 51308bcb0163301891e381ca9831d2c41f1cb650 assets\expandingtechnologies\lang\en_ud.json
 81383ab40c93ba0396c1ee096bba6dcc9f708cbe assets\expandingtechnologies\models\item\railroad_light_controller.json
 e4b2c81ff5598d84de857d7ab58d07a2eae50607 assets\expandingtechnologies\blockstates\railroad_light_controller.json
 954c47705a38e44ab7f1a537ea7747270d58d71c assets\expandingtechnologies\lang\en_us.json
-6b8b25a3a092ee6b6e65672230fdbd1fc9001567 data\expandingtechnologies\loot_tables\blocks\railroad_light_controller.json
+b61cce07d9b78fa2a8d3f67c5c1a43e990976014 data\expandingtechnologies\loot_tables\blocks\railroad_light_controller.json
 50c5f097c21d82924af3c9d4d21bb17eaea7185d data\minecraft\tags\blocks\mineable\pickaxe.json

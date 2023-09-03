@@ -5,7 +5,7 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.LightDisplaySource;
@@ -20,7 +20,7 @@ public class ETBlocks {
 
     public static final BlockEntry<CrossingLightsBlock> RAILROAD_LIGHT_CONTROLLER = REGISTRATE.block("railroad_light_controller", CrossingLightsBlock::new)
             .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.color(MaterialColor.PODZOL))
+            .properties(p -> p.mapColor(MapColor.PODZOL))
             .properties(BlockBehaviour.Properties::noOcclusion)
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
             .transform(pickaxeOnly())
