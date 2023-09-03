@@ -7,6 +7,7 @@ import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.RenderTypes;
+import com.simibubi.create.foundation.utility.Couple;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -16,6 +17,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
@@ -29,11 +31,18 @@ public class NixieTubeRendererMixin {
 
     @Inject(method = {"renderSafe(Lcom/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V"}, at = @At(value = "INVOKE", target = "Lcom/jozufozu/flywheel/util/transform/TransformStack;unCentre()Ljava/lang/Object;", shift = At.Shift.AFTER))
     private void et$renderSafe(NixieTubeBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay, CallbackInfo ci) {
-        if (Objects.equals(be.getFullText().getString(), "x§") || Objects.equals(be.getFullText().getString(), "§x") || Objects.equals(be.getFullText().getString(), "§§")) {
+        if (Objects.equals(be.getFullText().getString(), "x§") || Objects.equals(be.getFullText().getString(), "§x") || Objects.equals(be.getFullText().getString(), "§§"))
             renderAsLight(be, ms, buffer, light, be.getFullText().getString());
-        }
     }
 
+    @Redirect(method = "renderSafe(Lcom/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity;getDisplayedStrings()Lcom/simibubi/create/foundation/utility/Couple;"))
+    private Couple<String> injected(NixieTubeBlockEntity be) {
+        if (Objects.equals(be.getFullText().getString(), "x§") || Objects.equals(be.getFullText().getString(), "§x") || Objects.equals(be.getFullText().getString(), "§§"))
+            return Couple.create("", "");
+        else return be.getDisplayedStrings();
+    }
+
+    @Unique
     private void renderAsLight(NixieTubeBlockEntity be, PoseStack ms, MultiBufferSource buffer, int light, String parsedText) {
         BlockState blockState = be.getBlockState();
         Direction facing = facing(blockState);
@@ -80,6 +89,7 @@ public class NixieTubeRendererMixin {
         };
     }
 
+    @Unique
     private void renderTube(PoseStack ms, MultiBufferSource buffer, BlockState blockState) {
         // Render the tube with the desired color and effects
         CachedBufferer.partial(AllPartialModels.SIGNAL_RED, blockState)
