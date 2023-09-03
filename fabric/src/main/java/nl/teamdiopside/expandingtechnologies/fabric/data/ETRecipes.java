@@ -33,11 +33,6 @@ public class ETRecipes extends FabricRecipeProvider {
                 .pattern("ECE")
                 .unlockedBy("has_railway_casing", RegistrateRecipeProvider.has(AllBlocks.RAILWAY_CASING.get()))
                 .save(exporter, ETUtil.resourceLocation("crafting/railroad_light_controller"));
-        itemApplication("fluid_valve_from_application", b -> b.require(AllBlocks.FLUID_PIPE.get())
-                .require(AllItems.IRON_SHEET.get())
-                .output(AllBlocks.FLUID_VALVE.get()))
-                .register(exporter);
-
     }
 
     private CreateRecipeProvider.GeneratedRecipe sequencedAssembly(String name, UnaryOperator<SequencedAssemblyRecipeBuilder> transform) {

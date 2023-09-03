@@ -13,6 +13,5 @@ public class ETData implements DataGeneratorEntrypoint {
         ExpandingTechnologies.registrate().setupDatagen(gen, helper);
         gen.addProvider(true, new LangMerger(gen, ExpandingTechnologies.MODID, "Expanding Technologies", ETLangPartials.values()));
         gen.addProvider(true, ETRecipes::new);
-        //gen.addProvider(true, ETItemTags::new);
     }
 }
