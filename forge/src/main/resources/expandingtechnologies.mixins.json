@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "nl.teamdiopside.expandingtechnologies.mixin.forge",
   "compatibilityLevel": "JAVA_17",
+  "refmap": "expandingtechnologies-common-refmap.json",
   "mixins": [
   ],
   "client": [
