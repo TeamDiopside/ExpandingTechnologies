@@ -1,5 +1,7 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
 architectury {
@@ -103,6 +105,50 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "expandingtechnologies"
+    versionNumber = "${rootProject.mod_version}-fabric-1.19.2"
+    versionName = "${rootProject.mod_version} Fabric 1.19.2"
+    versionType = "release"
+    uploadFile = remapJar
+    gameVersions = ["1.19.2"]
+    loaders = ["fabric"]
+    dependencies {
+        required.project "architectury-api"
+        required.project "fabric-api"
+        required.project "create"
+    }
+    changelog = rootProject.file("CHANGELOG_LATEST.md").text
+
+    syncBodyFrom = rootProject.file("README.md").text
+    tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
+}
+
+curseforge {
+    project {
+        apiKey = System.getenv("CURSEFORGE_TOKEN")
+        id = "884893"
+        changelog = rootProject.file("CHANGELOG_LATEST.md").text
+        changelogType = "markdown"
+        releaseType = "release"
+        addGameVersion "1.19.2"
+        addGameVersion "Fabric"
+
+        relations {
+            requiredDependency "architectury-api"
+            requiredDependency "fabric-api"
+            requiredDependency "create"
+        }
+        mainArtifact(remapJar) {
+            displayName = "${rootProject.mod_version} Fabric 1.19.2"
+        }
+        options {
+            javaVersionAutoDetect = false
+        }
+    }
 }
 
 processResources {
