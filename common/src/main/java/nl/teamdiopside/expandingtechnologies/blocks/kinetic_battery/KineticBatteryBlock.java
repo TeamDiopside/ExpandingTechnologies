@@ -39,6 +39,6 @@ public class KineticBatteryBlock extends DirectionalKineticBlock {
         if (interactionHand == InteractionHand.MAIN_HAND) {
             level.setBlockAndUpdate(blockPos, blockState.setValue(CHARGING, !blockState.getValue(CHARGING)));
         }
-        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+        return InteractionResult.SUCCESS;
     }
 }

@@ -18,11 +18,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.Vec3;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlocks;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
 
@@ -41,11 +41,17 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         super.addBehaviours(behaviours);
         int max = CreativeMotorBlockEntity.MAX_SPEED;
-        generatedSpeed = new KineticScrollValueBehaviour(Lang.translateDirect("kinetics.creative_motor.rotation_speed"), this, new MotorValueBox());
+        generatedSpeed = new KineticScrollValueBehaviour(Lang.translateDirect("kinetics.creative_motor.rotation_speed"), this, new SpeedBox());
         generatedSpeed.between(-max, max);
         generatedSpeed.value = CreativeMotorBlockEntity.DEFAULT_SPEED;
         generatedSpeed.withCallback(i -> this.updateGeneratedRotation());
+        generatedSpeed.onlyActiveWhen(() -> !charging);
         behaviours.add(generatedSpeed);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
     }
 
     @Override
@@ -70,11 +76,11 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
         return super.addToGoggleTooltip(tooltip, isPlayerSneaking);
     }
 
-    static class MotorValueBox extends ValueBoxTransform.Sided {
+    static class SpeedBox extends ValueBoxTransform.Sided {
 
         @Override
         protected Vec3 getSouthLocation() {
-            return VecHelper.voxelSpace(8, 8, 12.5);
+            return VecHelper.voxelSpace(8, 8, 20);
         }
 
         @Override

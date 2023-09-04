@@ -1,12 +1,15 @@
 package nl.teamdiopside.expandingtechnologies.registry;
 
-import com.simibubi.create.AllBlocks;
+import com.google.common.base.Suppliers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.Registrar;
+import dev.architectury.registry.registries.RegistrarManager;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -24,10 +27,11 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 public class ETBlocks {
 
-    private static final CreateRegistrate REGISTRATE = ExpandingTechnologies.registrate();
+    public static final Registrar<Block> REGISTRAR = Suppliers.memoize(() -> RegistrarManager.get(ExpandingTechnologies.MODID)).get().get(Registries.BLOCK);
 
-    public static final BlockEntry<KineticBatteryBlock> KINETIC_BATTERY = REGISTRATE.block("kinetic_battery", KineticBatteryBlock::new)
-            .register();
+    public static final RegistrySupplier<Block> KINETIC_BATTERY = REGISTRAR.register(new ResourceLocation(ExpandingTechnologies.MODID, "kinetic_battery"), () -> new KineticBatteryBlock(BlockBehaviour.Properties.of()));
+
+    private static final CreateRegistrate REGISTRATE = ExpandingTechnologies.registrate();
 
     public static final BlockEntry<CrossingLightsBlock> RAILROAD_LIGHT_CONTROLLER = REGISTRATE.block("railroad_light_controller", CrossingLightsBlock::new)
             .initialProperties(SharedProperties::softMetal)

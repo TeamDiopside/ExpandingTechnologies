@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing:north": {
+      "model": "minecraft:oak_button"
+    },
+    "facing:east": {
+      "model": "minecraft:oak_button",
+      "y": 90
+    },
+    "facing:south": {
+      "model": "minecraft:oak_button",
+      "y": 180
+    },
+    "facing:west": {
+      "model": "minecraft:oak_button",
+      "y": 270
+    }
+  }
+}
