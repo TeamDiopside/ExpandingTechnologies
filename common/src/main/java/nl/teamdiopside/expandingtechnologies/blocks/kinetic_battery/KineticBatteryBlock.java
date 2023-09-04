@@ -20,6 +20,7 @@ public class KineticBatteryBlock extends DirectionalKineticBlock {
 
     public KineticBatteryBlock(Properties properties) {
         super(properties);
+        registerDefaultState(stateDefinition.any().setValue(CHARGING, false).setValue(FACING, Direction.NORTH));
     }
 
     @Override
@@ -36,7 +37,7 @@ public class KineticBatteryBlock extends DirectionalKineticBlock {
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
         if (interactionHand == InteractionHand.MAIN_HAND) {
-            level.setBlock(blockPos, blockState.setValue(CHARGING, !blockState.getValue(CHARGING)), 1);
+            level.setBlockAndUpdate(blockPos, blockState.setValue(CHARGING, !blockState.getValue(CHARGING)));
         }
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
