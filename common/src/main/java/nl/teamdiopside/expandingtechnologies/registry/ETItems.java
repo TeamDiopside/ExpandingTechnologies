@@ -10,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 
 import java.util.IdentityHashMap;
@@ -34,6 +33,8 @@ public class ETItems {
 
     public static void addToTab() {
         add(AllBlocks.TRACK_OBSERVER.get(), ETBlocks.RAILROAD_LIGHT_CONTROLLER.get());
-        add(ETBlocks.RAILROAD_LIGHT_CONTROLLER.get(), KINETIC_BATTERY.get());
+        add(AllBlocks.CREATIVE_MOTOR.get(), KINETIC_BATTERY.get());
     }
+
+    public static void register() {}
 }

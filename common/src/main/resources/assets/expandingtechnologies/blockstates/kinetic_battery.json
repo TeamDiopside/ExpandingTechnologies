@@ -1,19 +1,50 @@
 {
   "variants": {
-    "facing:north": {
-      "model": "minecraft:oak_button"
-    },
-    "facing:east": {
-      "model": "minecraft:oak_button",
-      "y": 90
-    },
-    "facing:south": {
-      "model": "minecraft:oak_button",
+    "facing=north,charging=false": {
+      "model": "create:block/creative_motor/block",
       "y": 180
     },
-    "facing:west": {
-      "model": "minecraft:oak_button",
+    "facing=north,charging=true": {
+      "model": "create:block/creative_motor/block",
+      "y": 180
+    },
+    "facing=east,charging=false": {
+      "model": "create:block/creative_motor/block",
       "y": 270
+    },
+    "facing=east,charging=true": {
+      "model": "create:block/creative_motor/block",
+      "y": 270
+    },
+    "facing=south,charging=false": {
+      "model": "create:block/creative_motor/block",
+      "y": 0
+    },
+    "facing=south,charging=true": {
+      "model": "create:block/creative_motor/block",
+      "y": 0
+    },
+    "facing=west,charging=false": {
+      "model": "create:block/creative_motor/block",
+      "y": 90
+    },
+    "facing=west,charging=true": {
+      "model": "create:block/creative_motor/block",
+      "y": 90
+    },
+    "facing=up,charging=false": {
+      "model": "create:block/creative_motor/block_vertical"
+    },
+    "facing=up,charging=true": {
+      "model": "create:block/creative_motor/block_vertical"
+    },
+    "facing=down,charging=false": {
+      "model": "create:block/creative_motor/block_vertical",
+      "x": 180
+    },
+    "facing=down,charging=true": {
+      "model": "create:block/creative_motor/block_vertical",
+      "x": 180
     }
   }
 }

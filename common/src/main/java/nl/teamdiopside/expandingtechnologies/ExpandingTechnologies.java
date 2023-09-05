@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlockEntities;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlocks;
+import nl.teamdiopside.expandingtechnologies.registry.ETItems;
 import nl.teamdiopside.expandingtechnologies.registry.ETSounds;
 import org.slf4j.Logger;
 
@@ -15,6 +16,7 @@ public class ExpandingTechnologies
 
 	public static void init() {
 		ETBlocks.register();
+		ETItems.register();
 		ETBlockEntities.register();
 		ETSounds.register();
 	}

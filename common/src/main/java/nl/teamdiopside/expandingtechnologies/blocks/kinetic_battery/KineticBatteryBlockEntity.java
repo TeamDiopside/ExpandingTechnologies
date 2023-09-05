@@ -4,7 +4,6 @@ import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
-import com.simibubi.create.content.kinetics.motor.CreativeMotorBlock;
 import com.simibubi.create.content.kinetics.motor.CreativeMotorBlockEntity;
 import com.simibubi.create.content.kinetics.motor.KineticScrollValueBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
@@ -22,7 +21,6 @@ import net.minecraft.world.phys.Vec3;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlocks;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
 
@@ -45,13 +43,7 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
         generatedSpeed.between(-max, max);
         generatedSpeed.value = CreativeMotorBlockEntity.DEFAULT_SPEED;
         generatedSpeed.withCallback(i -> this.updateGeneratedRotation());
-        generatedSpeed.onlyActiveWhen(() -> !charging);
         behaviours.add(generatedSpeed);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
     }
 
     @Override
@@ -65,7 +57,7 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
     public float getGeneratedSpeed() {
         if (!AllBlocks.CREATIVE_MOTOR.has(getBlockState()))
             return 0;
-        return convertToDirection(generatedSpeed.getValue(), getBlockState().getValue(CreativeMotorBlock.FACING));
+        return convertToDirection(generatedSpeed.getValue(), getBlockState().getValue(KineticBatteryBlock.FACING));
     }
 
     @Override
@@ -80,12 +72,12 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
 
         @Override
         protected Vec3 getSouthLocation() {
-            return VecHelper.voxelSpace(8, 8, 20);
+            return VecHelper.voxelSpace(8, 8, 12.5);
         }
 
         @Override
         public Vec3 getLocalOffset(BlockState state) {
-            Direction facing = state.getValue(CreativeMotorBlock.FACING);
+            Direction facing = state.getValue(KineticBatteryBlock.FACING);
             return super.getLocalOffset(state).add(Vec3.atLowerCornerOf(facing.getNormal())
                     .scale(-1 / 16f));
         }
@@ -93,7 +85,7 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
         @Override
         public void rotate(BlockState state, PoseStack ms) {
             super.rotate(state, ms);
-            Direction facing = state.getValue(CreativeMotorBlock.FACING);
+            Direction facing = state.getValue(KineticBatteryBlock.FACING);
             if (facing.getAxis() == Direction.Axis.Y)
                 return;
             if (getSide() != Direction.UP)
@@ -104,11 +96,11 @@ public class KineticBatteryBlockEntity extends GeneratingKineticBlockEntity {
 
         @Override
         protected boolean isSideActive(BlockState state, Direction direction) {
-            Direction facing = state.getValue(CreativeMotorBlock.FACING);
-            if (facing.getAxis() != Direction.Axis.Y && direction == Direction.DOWN)
+            Direction facing = state.getValue(KineticBatteryBlock.FACING);
+            boolean charging = state.getValue(KineticBatteryBlock.CHARGING);
+            if (facing.getAxis() != Direction.Axis.Y && direction == Direction.DOWN || charging)
                 return false;
             return direction.getAxis() != facing.getAxis();
         }
-
     }
 }
