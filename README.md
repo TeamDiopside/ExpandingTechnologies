@@ -14,6 +14,8 @@
 - Railroad Crossing Lights
 - _If you have a suggestion, please submit a [suggestion form](https://github.com/TeamDiopside/ExpandingTechnologies/issues)_
 
+[![Railroad Crossing Lights](https://teamdiopside.nl/assets/expandingtechnologies/videoplayer.png)](https://youtu.be/8C3wTDdiaV4)
+
 ---
 
 [![Discord](https://teamdiopside.nl/assets/diopside/Serverbanner.png)](https://teamdiopside.nl/discord/)
