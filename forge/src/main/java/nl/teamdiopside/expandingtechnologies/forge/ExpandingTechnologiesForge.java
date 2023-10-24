@@ -17,7 +17,7 @@ public class ExpandingTechnologiesForge {
         EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
 
         ExpandingTechnologies.init();
-        ExpandingTechnologies.registrate().useCreativeTab(AllCreativeModeTabs.MAIN_TAB);
+        ExpandingTechnologies.registrate().setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
         ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
     }
 }
