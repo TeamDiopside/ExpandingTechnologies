@@ -8,7 +8,7 @@
 [![fabric-api](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/fabric-api_vector.svg)](https://modrinth.com/mod/fabric-api)
 [![forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/forge_vector.svg)](https://files.minecraftforge.net/net/minecraftforge/forge/index_1.19.2.html)
 
-[![RocketNode](https://teamdiopside.nl/assets/diopside/rocketnode.png)](https://billing.rocketnode.com/aff.php?aff=150440)
+[![RocketNode](https://teamdiopside.nl/assets/diopside/rocketnode2.png)](https://billing.rocketnode.com/aff.php?aff=150440)
 
 ### The mod adds:
 - Railroad Crossing Lights
