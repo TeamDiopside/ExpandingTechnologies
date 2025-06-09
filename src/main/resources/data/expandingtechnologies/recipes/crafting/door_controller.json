@@ -1,20 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "C": {
+  "ingredients": [
+    {
       "item": "create:railway_casing"
     },
-    "D": {
+    {
       "item": "create:train_door"
     }
-  },
-  "pattern": [
-    "CD"
   ],
   "result": {
-    "count": 4,
+    "count": 2,
     "item": "expandingtechnologies:door_controller"
-  },
-  "show_notification": true
+  }
 }
