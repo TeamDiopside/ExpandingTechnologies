@@ -1,0 +1,16 @@
+{
+  "expandingtechnologies.ponder.railroad_lights_instruction.header" : "Using the Railroad Light Controller",
+  "expandingtechnologies.ponder.railroad_lights_instruction.text_1" : "The Railroad Light Controller can be used to make railroad crossings a little more beautiful.",
+  "expandingtechnologies.ponder.railroad_lights_instruction.text_2" : "To use it, attach a Display Link targeted at Nixie Tubes.",
+  "expandingtechnologies.ponder.railroad_lights_instruction.text_3" : "Then, just power the block with Redstone to turn the lights on.",
+  "expandingtechnologies.ponder.railroad_lights_instruction.text_4" : "If you place a Note Block on top of the controller, a Dutch Railroad Bell will ring when turned on.",
+
+  "expandingtechnologies.ponder.railroad_lights_example.header" : "Railroad Light Controller Example",
+  "expandingtechnologies.ponder.railroad_lights_example.text_1" : "You can use Train Observers to detect upcoming trains.",
+  "expandingtechnologies.ponder.railroad_lights_example.text_2" : "Connect them to a Powered Toggle Latch using Redstone Links to power the block.",
+
+  "expandingtechnologies.ponder.door_controller_instruction.header" : "Using the Door Controller",
+  "expandingtechnologies.ponder.door_controller_instruction.text_1" : "The Door Controller can be used to specify which train doors to open at a station using redstone.",
+  "expandingtechnologies.ponder.door_controller_instruction.text_2" : "When powering a specific side, that side of the train will have it's doors opened on arrival.",
+  "expandingtechnologies.ponder.door_controller_instruction.text_3" : "Multiple sides of the block can be powered to open doors on multiple sides of the train."
+}

@@ -1,0 +1,13 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"side": "expandingtechnologies:block/door_controller_side_on",
+		"particle": "#side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0], "to": [16, 16, 16],
+			"faces": { "north": { "uv": [0, 0, 16, 16], "texture": "#side" } }
+		}
+	]
+}

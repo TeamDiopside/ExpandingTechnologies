@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "nl.teamdiopside.expandingtechnologies.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "expandingtechnologies.refmap.json",
+  "mixins": [
+    "DisplayLinkMixin",
+    "NixieTubeMixin",
+    "NixieTubeRendererMixin",
+    "NoteBlockMixin",
+    "PackageOrderRequestPacketMixin",
+    "RedstoneMixin",
+    "SlidingDoorMovementBehaviourMixin",
+    "StockTickerBlockEntityAccessor",
+    "StockTickerInteractionHandlerMixin"
+  ],
+  "client": [
+    "PackagePortScreenMixin",
+    "RedstoneRequesterScreenMixin",
+    "StationScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
