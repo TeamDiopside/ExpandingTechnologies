@@ -284,10 +284,10 @@ public class PonderScenes {
         BlockPos lever4 = util.grid().at(3, 1,  2);
 
         // Show everything except station
-        scene.world().showSection(lever, Direction.DOWN);
         scene.world().showSection(util.select().position(doorController), Direction.DOWN);
         scene.idle(10);
-        scene.world().showSection(lever2, Direction.EAST);
+        scene.world().showSection(lever, Direction.DOWN);
+        scene.world().showSection(lever2, Direction.DOWN);
         scene.world().showSection(util.select().position(lever3), Direction.NORTH);
         scene.world().showSection(util.select().position(lever4), Direction.WEST);
 
