@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "expandingtechnologies.refmap.json",
   "mixins": [
+    "ContraptionMixin",
     "DisplayLinkMixin",
     "NixieTubeMixin",
     "NixieTubeRendererMixin",
