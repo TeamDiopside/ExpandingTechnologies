@@ -1,35 +1,21 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_railway_casing": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "create:railway_casing"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "expandingtechnologies:crafting/railroad_light_controller"
-      },
-      "trigger": "minecraft:recipe_unlocked"
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "expandingtechnologies:door_controller"
+        }
+      ],
+      "rolls": 1.0
     }
-  },
-  "requirements": [
-    [
-      "has_railway_casing",
-      "has_the_recipe"
-    ]
   ],
-  "rewards": {
-    "recipes": [
-      "expandingtechnologies:crafting/railroad_light_controller"
-    ]
-  },
-  "sends_telemetry_event": false
+  "random_sequence": "expandingtechnologies:blocks/door_controller"
 }
