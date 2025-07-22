@@ -4,6 +4,7 @@
 
 	"block.expandingtechnologies.railroad_light_controller": "Railroad Light Controller",
 	"block.expandingtechnologies.door_controller": "Door Controller",
+	"block.expandingtechnologies.item_vacuum": "Item Vacuum",
 
 
 	"_": "->------------------------]  UI & Messages  [------------------------<-",
@@ -32,6 +33,11 @@
 	"expandingtechnologies.ponder.door_controller_instruction.text_1" : "The Door Controller can be used to specify which train doors to open at a station using redstone.",
 	"expandingtechnologies.ponder.door_controller_instruction.text_2" : "When powering a specific side, that side of the train will have it's doors opened on arrival.",
 	"expandingtechnologies.ponder.door_controller_instruction.text_3" : "Multiple sides of the block can be powered to open doors on multiple sides of the train.",
+
+	"expandingtechnologies.ponder.item_vacuum_instruction.header" : "Using the Item Vacuum",
+	"expandingtechnologies.ponder.item_vacuum_instruction.text_1" : "The Item Vacuum is able to pick up items around it.",
+	"expandingtechnologies.ponder.item_vacuum_instruction.text_2" : "The items can be extracted from underneath.",
+	"expandingtechnologies.ponder.item_vacuum_instruction.text_3" : "A filter can be used to determine which item will be picked up.",
 
 	"_": "Thank you for translating Expanding Technologies!"
 

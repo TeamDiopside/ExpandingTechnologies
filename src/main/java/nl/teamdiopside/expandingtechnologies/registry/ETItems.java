@@ -23,5 +23,6 @@ public class ETItems {
     private static void addToTab() {
         add(AllBlocks.TRACK_OBSERVER.get(), ETBlocks.RAILROAD_LIGHT_CONTROLLER.get());
         add(ETBlocks.RAILROAD_LIGHT_CONTROLLER.get(), ETBlocks.DOOR_CONTROLLER.get());
+        add(ETBlocks.DOOR_CONTROLLER.get(), ETBlocks.ITEM_VACUUM.get());
     }
 }

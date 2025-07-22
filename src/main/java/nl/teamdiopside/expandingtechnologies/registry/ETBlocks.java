@@ -4,14 +4,15 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import nl.teamdiopside.expandingtechnologies.config.ETStress;
 import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.LightDisplaySource;
 import nl.teamdiopside.expandingtechnologies.blocks.doorcontroller.DoorControllerBlock;
+import nl.teamdiopside.expandingtechnologies.blocks.itemvacuum.ItemVacuumBlock;
 import nl.teamdiopside.expandingtechnologies.util.ETUtil;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
@@ -48,6 +49,19 @@ public class ETBlocks {
             .properties(p -> p.isRedstoneConductor((state, blockGetter, pos) -> false))
             .transform(pickaxeOnly())
             .lang("Door Controller")
+            .item()
+            .transform(ETUtil.itemModel("block_0"))
+            .register();
+
+    public static final BlockEntry<ItemVacuumBlock> ITEM_VACUUM = REGISTRATE.block("item_vacuum", ItemVacuumBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.isRedstoneConductor((state, blockGetter, pos) -> false))
+            .transform(pickaxeOnly())
+            .transform(ETStress.setImpact(4.0))
+            .lang("Item Vacuum")
             .item()
             .transform(ETUtil.itemModel("block_0"))
             .register();

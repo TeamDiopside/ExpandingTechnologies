@@ -38,6 +38,7 @@ public class ExpandingTechnologies {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
 
+        ETPartialModels.register();
         ETBlocks.register();
         ETBlockEntities.register();
         ETSounds.register();
