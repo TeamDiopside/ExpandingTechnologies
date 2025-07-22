@@ -7,7 +7,7 @@ import com.simibubi.create.content.logistics.stockTicker.PackageOrderRequestPack
 import com.simibubi.create.content.logistics.stockTicker.PackageOrderWithCrafts;
 import com.simibubi.create.content.logistics.stockTicker.StockTickerBlockEntity;
 import net.minecraft.server.level.ServerPlayer;
-import nl.teamdiopside.expandingtechnologies.Config;
+import nl.teamdiopside.expandingtechnologies.registry.ETConfigs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,7 +34,7 @@ public class PackageOrderRequestPacketMixin {
             )
     )
     private void injected(ServerPlayer player, StockTickerBlockEntity be, PackageOrderWithCrafts order, String address) {
-        boolean shouldReplace = AllBlocks.REDSTONE_REQUESTER.isIn(player.getMainHandItem()) && Config.allowSelfAddress;
+        boolean shouldReplace = AllBlocks.REDSTONE_REQUESTER.isIn(player.getMainHandItem()) && ETConfigs.common().allowSelfAddress.get();
         RedstoneRequesterBlock.programRequester(player, be, order,
                 address.replace("@s", shouldReplace ? player.getName().getString() : "@s")
         );
@@ -49,7 +49,7 @@ public class PackageOrderRequestPacketMixin {
             cancellable = true
     )
     private void et$applySettings(ServerPlayer player, StockTickerBlockEntity be, CallbackInfo ci) {
-        if (Config.allowSelfAddress) {
+        if (ETConfigs.common().allowSelfAddress.get()) {
             be.broadcastPackageRequest(LogisticallyLinkedBehaviour.RequestType.PLAYER, order, null,
                     address.replace("@s", player.getName().getString())
             );

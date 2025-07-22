@@ -3,7 +3,11 @@ package nl.teamdiopside.expandingtechnologies;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.foundation.item.KineticStats;
+import com.simibubi.create.foundation.item.TooltipModifier;
 import dev.architectury.platform.forge.EventBuses;
+import net.createmod.catnip.lang.FontHelper;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,12 +15,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import nl.teamdiopside.expandingtechnologies.registry.ETBlockEntities;
-import nl.teamdiopside.expandingtechnologies.registry.ETBlocks;
-import nl.teamdiopside.expandingtechnologies.registry.ETPonder;
-import nl.teamdiopside.expandingtechnologies.registry.ETSounds;
+import nl.teamdiopside.expandingtechnologies.registry.*;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -27,9 +27,14 @@ public class ExpandingTechnologies {
     public static final String MODID = "expandingtechnologies";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
+    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID)
+            .setTooltipModifierFactory(item ->
+            new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
+                    .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
+            );
 
     public ExpandingTechnologies() {
+        ModLoadingContext modLoadingContext = ModLoadingContext.get();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
 
@@ -40,7 +45,7 @@ public class ExpandingTechnologies {
         ExpandingTechnologies.registrate().setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
         ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ETConfigs.register(modLoadingContext);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

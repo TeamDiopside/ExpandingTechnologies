@@ -14,9 +14,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import nl.teamdiopside.expandingtechnologies.Config;
 import nl.teamdiopside.expandingtechnologies.behaviour.IBetterContraptionBounds;
 import nl.teamdiopside.expandingtechnologies.blocks.doorcontroller.DoorControllerBlock;
+import nl.teamdiopside.expandingtechnologies.registry.ETConfigs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -29,7 +29,7 @@ public abstract class SlidingDoorMovementBehaviourMixin {
 
     @Redirect(method = {"getDoorFacing"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;m_82399_()Lnet/minecraft/world/phys/Vec3;"))
     private Vec3 injected(AABB instance, @Local(argsOnly = true) MovementContext context) {
-        if (Config.betterContraptionDoorPosition && context.contraption instanceof IBetterContraptionBounds contraption) {
+        if (ETConfigs.common().betterContraptionDoorPosition.get() && context.contraption instanceof IBetterContraptionBounds contraption) {
             if (contraption.expandingtechnologies$getBetterBounds() == null) {
                 contraption.expandingtechnologies$calculateBetterBounds();
             }

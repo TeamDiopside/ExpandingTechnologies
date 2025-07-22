@@ -11,7 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import nl.teamdiopside.expandingtechnologies.Config;
+import nl.teamdiopside.expandingtechnologies.registry.ETConfigs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,7 +28,7 @@ public class StockTickerInteractionHandlerMixin {
             )
     )
     private static boolean injected(StockTickerBlockEntity instance, LogisticallyLinkedBehaviour.RequestType requestType, PackageOrder packageOrder, IdentifiedInventory identifiedInventory, String address) {
-        if (!Config.allowSelfAddress) {
+        if (!ETConfigs.common().allowSelfAddress.get()) {
             return instance.broadcastPackageRequest(requestType, packageOrder, identifiedInventory, address);
         } else {
             return true;
@@ -43,7 +43,7 @@ public class StockTickerInteractionHandlerMixin {
             )
     )
     private static void et$interactWithShop(Player player, Level level, BlockPos targetPos, ItemStack mainHandItem, CallbackInfo ci, @Local PackageOrder order) {
-        if (Config.allowSelfAddress && (level.getBlockEntity(targetPos) instanceof StockTickerBlockEntity tickerBE)) {
+        if (ETConfigs.common().allowSelfAddress.get() && (level.getBlockEntity(targetPos) instanceof StockTickerBlockEntity tickerBE)) {
             tickerBE.broadcastPackageRequest(LogisticallyLinkedBehaviour.RequestType.PLAYER, order, null, ShoppingListItem.getAddress(mainHandItem)
                     .replace("@s", player.getName().getString()));
         }
