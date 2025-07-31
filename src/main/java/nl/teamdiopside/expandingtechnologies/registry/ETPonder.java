@@ -12,8 +12,7 @@ import nl.teamdiopside.expandingtechnologies.ponder.DoorControllerPonder;
 import nl.teamdiopside.expandingtechnologies.ponder.ItemVacuumPonder;
 import org.jetbrains.annotations.NotNull;
 
-import static com.simibubi.create.infrastructure.ponder.AllCreatePonderTags.DISPLAY_SOURCES;
-import static com.simibubi.create.infrastructure.ponder.AllCreatePonderTags.KINETIC_APPLIANCES;
+import static com.simibubi.create.infrastructure.ponder.AllCreatePonderTags.*;
 
 public class ETPonder implements PonderPlugin {
 
@@ -34,8 +33,9 @@ public class ETPonder implements PonderPlugin {
     @Override
     public void registerTags(PonderTagRegistrationHelper<ResourceLocation> helper) {
         PonderTagRegistrationHelper<RegistryEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
-        HELPER.addToTag(DISPLAY_SOURCES).add(ETBlocks.RAILROAD_LIGHT_CONTROLLER);
+        HELPER.addToTag(DISPLAY_SOURCES).add(ETBlocks.RAILROAD_LIGHT_CONTROLLER).add(ETBlocks.SMART_TRAIN_OBSERVER);
         HELPER.addToTag(KINETIC_APPLIANCES).add(ETBlocks.ITEM_VACUUM);
+        HELPER.addToTag(TRAIN_RELATED).add(ETBlocks.SMART_TRAIN_OBSERVER);
     }
 
     @Override

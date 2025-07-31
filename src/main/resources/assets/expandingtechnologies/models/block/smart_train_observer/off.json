@@ -1,0 +1,9 @@
+{
+	"parent": "create:block/track_observer/block",
+	"textures": {
+		"0": "create:block/chain_signal_box_top",
+		"1": "expandingtechnologies:block/smart_observer_side",
+		"2": "create:block/chain_signal_box_top",
+		"particle": "expandingtechnologies:block/smart_observer_side"
+	}
+}
