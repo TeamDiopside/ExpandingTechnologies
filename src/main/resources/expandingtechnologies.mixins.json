@@ -14,12 +14,16 @@
     "RedstoneMixin",
     "SlidingDoorMovementBehaviourMixin",
     "StockTickerBlockEntityAccessor",
-    "StockTickerInteractionHandlerMixin"
+    "StockTickerInteractionHandlerMixin",
+    "TrackObserverVisualAccessor",
+    "TrainMixin"
   ],
   "client": [
+    "DestinationSuggestionsAccessor",
     "PackagePortScreenMixin",
     "RedstoneRequesterScreenMixin",
-    "StationScreenMixin"
+    "StationScreenMixin",
+    "TrackTargetingClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

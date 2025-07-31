@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_track_observer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create:track_observer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "expandingtechnologies:crafting/smart_train_observer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_track_observer",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "expandingtechnologies:crafting/smart_train_observer"
+    ]
+  },
+  "sends_telemetry_event": false
+}

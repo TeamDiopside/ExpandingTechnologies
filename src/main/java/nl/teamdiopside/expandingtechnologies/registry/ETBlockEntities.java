@@ -6,6 +6,9 @@ import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlockEntity;
 import nl.teamdiopside.expandingtechnologies.blocks.itemvacuum.ItemVacuumBlockEntity;
 import nl.teamdiopside.expandingtechnologies.blocks.itemvacuum.ItemVacuumRenderer;
+import nl.teamdiopside.expandingtechnologies.blocks.observer.SmartTrainObserverRenderer;
+import nl.teamdiopside.expandingtechnologies.blocks.observer.SmartTrainObserverBlockEntity;
+import nl.teamdiopside.expandingtechnologies.blocks.observer.SmartTrainObserverVisual;
 
 public class ETBlockEntities {
     private static final CreateRegistrate REGISTRATE = ExpandingTechnologies.registrate();
@@ -19,6 +22,13 @@ public class ETBlockEntities {
             .blockEntity("item_vacuum", ItemVacuumBlockEntity::new)
             .validBlocks(ETBlocks.ITEM_VACUUM)
             .renderer(() -> ItemVacuumRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<SmartTrainObserverBlockEntity> SMART_TRAIN_OBSERVER = REGISTRATE
+            .blockEntity("smart_train_observer", SmartTrainObserverBlockEntity::new)
+            .visual(() -> SmartTrainObserverVisual::new)
+            .validBlocks(ETBlocks.SMART_TRAIN_OBSERVER)
+            .renderer(() -> SmartTrainObserverRenderer::new)
             .register();
 
     public static void register() {}

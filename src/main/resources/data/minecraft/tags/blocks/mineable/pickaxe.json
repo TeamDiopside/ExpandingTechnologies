@@ -3,6 +3,7 @@
   "values": [
     "expandingtechnologies:railroad_light_controller",
     "expandingtechnologies:door_controller",
-    "expandingtechnologies:item_vacuum"
+    "expandingtechnologies:item_vacuum",
+    "expandingtechnologies:smart_train_observer"
   ]
 }

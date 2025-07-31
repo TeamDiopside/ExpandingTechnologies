@@ -1,5 +1,8 @@
 package nl.teamdiopside.expandingtechnologies.registry;
 
+import com.simibubi.create.AllDisplaySources;
+import com.simibubi.create.api.behaviour.display.DisplaySource;
+import com.simibubi.create.content.trains.track.TrackTargetingBlockItem;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -7,12 +10,13 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import nl.teamdiopside.expandingtechnologies.config.ETStress;
 import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.CrossingLightsBlock;
 import nl.teamdiopside.expandingtechnologies.blocks.crossinglights.LightDisplaySource;
 import nl.teamdiopside.expandingtechnologies.blocks.doorcontroller.DoorControllerBlock;
 import nl.teamdiopside.expandingtechnologies.blocks.itemvacuum.ItemVacuumBlock;
+import nl.teamdiopside.expandingtechnologies.blocks.observer.SmartTrainObserverBlock;
+import nl.teamdiopside.expandingtechnologies.config.ETStress;
 import nl.teamdiopside.expandingtechnologies.util.ETUtil;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
@@ -65,6 +69,17 @@ public class ETBlocks {
             .item()
             .transform(ETUtil.itemModel("block_0"))
             .register();
+
+    public static final BlockEntry<SmartTrainObserverBlock> SMART_TRAIN_OBSERVER = REGISTRATE.block("smart_train_observer", SmartTrainObserverBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties((p) -> p.mapColor(MapColor.PODZOL).noOcclusion().sound(SoundType.NETHERITE_BLOCK))
+            .transform(pickaxeOnly())
+            .transform(DisplaySource.displaySource(AllDisplaySources.OBSERVED_TRAIN_NAME))
+            .lang("Smart Train Observer")
+            .item(TrackTargetingBlockItem.ofType(ETEdgePointTypes.SMART_OBSERVER))
+            .transform(ETUtil.itemModel("block_0"))
+            .register();
+
 
     public static void register() {}
 }

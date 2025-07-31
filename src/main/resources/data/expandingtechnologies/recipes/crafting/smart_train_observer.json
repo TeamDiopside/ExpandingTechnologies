@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:brass_sheet"
+    },
+    "O": {
+      "item": "create:track_observer"
+    },
+    "E": {
+      "item": "create:electron_tube"
+    }
+  },
+  "pattern": [
+    "B",
+    "O",
+    "E"
+  ],
+  "result": {
+    "count": 1,
+    "item": "expandingtechnologies:smart_train_observer"
+  },
+  "show_notification": true
+}

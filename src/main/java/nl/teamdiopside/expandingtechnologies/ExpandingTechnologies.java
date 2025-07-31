@@ -16,6 +16,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import nl.teamdiopside.expandingtechnologies.net.ETNetwork;
 import nl.teamdiopside.expandingtechnologies.registry.*;
 import org.slf4j.Logger;
 
@@ -38,9 +39,12 @@ public class ExpandingTechnologies {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
 
+        ETNetwork.register();
         ETPartialModels.register();
         ETBlocks.register();
+        ETObserverConditions.register();
         ETBlockEntities.register();
+        ETMenuTypes.register();
         ETSounds.register();
 
         ExpandingTechnologies.registrate().setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
