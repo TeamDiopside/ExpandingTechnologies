@@ -11,6 +11,7 @@ import com.simibubi.create.foundation.gui.widget.*;
 import net.createmod.catnip.data.IntAttached;
 import net.createmod.catnip.gui.UIRenderHelper;
 import net.createmod.catnip.gui.element.GuiGameElement;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.CommonComponents;
@@ -34,6 +35,7 @@ public class SmartTrainObserverScreen extends AbstractSimiContainerScreen<SmartT
     private ETObserverConditions.ObserverConditionRegistryEntry currentEntry;
     private final List<IntAttached<String>> suggestions = new ArrayList<>();
     private ModularGuiLine regexBox;
+    private IconButton invertButton;
     private DestinationSuggestions regexSuggestions;
     private String filter;
 
@@ -114,8 +116,15 @@ public class SmartTrainObserverScreen extends AbstractSimiContainerScreen<SmartT
             });
         });
 
+        // Button to invert the condition
+        invertButton = new IconButton(this.leftPos + 19, this.topPos + 80, AllIcons.I_ROTATE_CCW);
+        invertButton.withCallback(() -> invertButton.green = !invertButton.green);
+        invertButton.setToolTip(Component.translatable("expandingtechnologies.gui.invert_condition.title"));
+        invertButton.getToolTip().add(Component.translatable("expandingtechnologies.gui.invert_condition.description").withStyle(ChatFormatting.DARK_GRAY));
+        invertButton.green = this.menu.contentHolder.getSecond().inverted();
+
         // Actually add everything
-        addRenderableWidgets(typeLabel, typeSelector, confirmButton);
+        addRenderableWidgets(typeLabel, typeSelector, confirmButton, invertButton);
     }
 
     @Override
@@ -190,6 +199,6 @@ public class SmartTrainObserverScreen extends AbstractSimiContainerScreen<SmartT
     public void removed() {
         // Remove GUI and update condition
         super.removed();
-        ETNetwork.sendToServer(new SmartTrainObserverConfigurePacket(this.menu.contentHolder.getFirst(), this.currentEntry.buildCondition(this.filter)));
+        ETNetwork.sendToServer(new SmartTrainObserverConfigurePacket(this.menu.contentHolder.getFirst(), this.currentEntry.buildCondition(this.filter, this.invertButton.green)));
     }
 }

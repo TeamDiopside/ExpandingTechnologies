@@ -131,7 +131,7 @@ public class ETObserverConditions {
     public static ObserverConditionRegistryEntry STOPS_AT_STATION_CONDITION = REGISTRY.buildEntry("stops_at_station", (train, filter) -> {
         // If the station is our next destination we can stop looking.
         // This way we also support a bit of package delivery, provided the station is the current destination.
-        ObserverCondition destinationCondition = DESTINATION_CONDITION.buildCondition(filter);
+        ObserverCondition destinationCondition = DESTINATION_CONDITION.buildCondition(filter, false);
         if (destinationCondition.evaluate(train)) return true;
 
         // Using pre-calculated prediction data is the most efficient and accurate way.
@@ -243,8 +243,8 @@ public class ETObserverConditions {
             return allStrings.entrySet().stream().map(entry -> IntAttached.with(entry.getValue(), entry.getKey())).toList();
         }
 
-        public ObserverCondition buildCondition(String filter) {
-            return new ObserverCondition(this, filter);
+        public ObserverCondition buildCondition(String filter, boolean inverted) {
+            return new ObserverCondition(this, filter, inverted);
         }
     }
 

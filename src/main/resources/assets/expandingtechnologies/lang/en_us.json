@@ -19,6 +19,9 @@
 	"expandingtechnologies.observer_condition.stops_at_station": "Stops At Station",
 	"expandingtechnologies.observer_condition.train_name": "Train Name",
 
+	"expandingtechnologies.gui.invert_condition.title": "Invert Condition",
+	"expandingtechnologies.gui.invert_condition.description": "Click to Toggle",
+
 
 	"_": "->------------------------]  Subtitles  [------------------------<-",
 
