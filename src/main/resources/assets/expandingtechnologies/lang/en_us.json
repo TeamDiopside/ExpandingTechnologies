@@ -50,6 +50,15 @@
 	"expandingtechnologies.ponder.item_vacuum_instruction.text_2" : "The items can be extracted from underneath.",
 	"expandingtechnologies.ponder.item_vacuum_instruction.text_3" : "A filter can be used to determine which item will be picked up.",
 
+	"expandingtechnologies.ponder.smart_train_observer_instruction.header" : "Using the Smart Train Observer",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_1" : "The Smart Train Observer is an advanced variant of the Train Observer",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_2" : "It is able to detect trains based on a filter, which can be set by clicking the block.",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_3" : "You can, for example, filter trains based on their name!",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_4" : "\"Parrot Express\"",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_5" : "\"* Express\"",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_6" : "'*' can be used as a wildcard for your filter.",
+	"expandingtechnologies.ponder.smart_train_observer_instruction.text_7" : "Other conditions include the detection of destinations, conductors and passengers.",
+
 	"_": "Thank you for translating Expanding Technologies!"
 
 }

@@ -10,6 +10,7 @@ import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.ponder.CrossingLightsPonder;
 import nl.teamdiopside.expandingtechnologies.ponder.DoorControllerPonder;
 import nl.teamdiopside.expandingtechnologies.ponder.ItemVacuumPonder;
+import nl.teamdiopside.expandingtechnologies.ponder.SmartTrainObserverPonder;
 import org.jetbrains.annotations.NotNull;
 
 import static com.simibubi.create.infrastructure.ponder.AllCreatePonderTags.*;
@@ -28,6 +29,9 @@ public class ETPonder implements PonderPlugin {
 
         HELPER.forComponents(ETBlocks.ITEM_VACUUM)
                 .addStoryBoard("item_vacuum", ItemVacuumPonder::itemVacuumConstructing);
+
+        HELPER.forComponents(ETBlocks.SMART_TRAIN_OBSERVER)
+                .addStoryBoard("smart_train_observer", SmartTrainObserverPonder::constructing);
     }
 
     @Override
