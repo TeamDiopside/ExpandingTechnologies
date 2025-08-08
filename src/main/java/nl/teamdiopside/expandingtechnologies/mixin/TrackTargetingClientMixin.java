@@ -15,12 +15,12 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = {TrackTargetingClient.class}, remap = false)
+@Mixin(value = TrackTargetingClient.class, remap = false)
 public class TrackTargetingClientMixin {
 
     @Shadow static EdgePointType<?> lastType;
 
-    @Redirect(method = {"render"},
+    @Redirect(method = "render",
             at = @At(value = "INVOKE",
                     target = "Lcom/simibubi/create/content/trains/track/TrackTargetingBehaviour;render(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction$AxisDirection;Lcom/simibubi/create/content/trains/track/BezierTrackPointLocation;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IILcom/simibubi/create/content/trains/track/TrackTargetingBehaviour$RenderedTrackOverlayType;F)V"
             )

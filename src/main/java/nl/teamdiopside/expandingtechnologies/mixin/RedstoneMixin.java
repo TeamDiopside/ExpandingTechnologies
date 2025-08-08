@@ -9,9 +9,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = {RedStoneWireBlock.class})
+@Mixin(value = RedStoneWireBlock.class)
 public class RedstoneMixin {
     // Worthless half-working Mixin because Fabric doesn't have basic methods
+    // TODO reimplement Forge method
     @Inject(method = "shouldConnectTo(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;)Z", at = @At("HEAD"), cancellable = true)
     private static void et$shouldConnectTo(BlockState state, Direction side, CallbackInfoReturnable<Boolean> cir) {
         if (state.getBlock() instanceof RedstoneConnectable con) {

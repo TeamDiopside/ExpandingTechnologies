@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = {StockTickerInteractionHandler.class}, remap = false)
+@Mixin(value = StockTickerInteractionHandler.class, remap = false)
 public class StockTickerInteractionHandlerMixin {
 
     @Redirect(method = "interactWithShop",

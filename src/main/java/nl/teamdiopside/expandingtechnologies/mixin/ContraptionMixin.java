@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
 
-@Mixin(value = {Contraption.class}, remap = false)
+@Mixin(value = Contraption.class, remap = false)
 public class ContraptionMixin implements IBetterContraptionBounds {
 
     @Unique
