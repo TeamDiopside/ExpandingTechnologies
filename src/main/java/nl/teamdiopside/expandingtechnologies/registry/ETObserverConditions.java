@@ -40,7 +40,7 @@ public class ETObserverConditions {
         return stringMatchesRegex(train.navigation.destination.name, filter);
     }).icon(AllBlocks.TRACK_STATION).suggestionFunction((blockPos, player) -> {
         HashSet<GlobalStation> stations = new HashSet<>();
-        Create.RAILWAYS.trackNetworks.forEach((uuid, trackGraph) -> stations.addAll(trackGraph.getPoints(EdgePointType.STATION)));
+        Create.RAILWAYS.sided(player.level()).trackNetworks.forEach((uuid, trackGraph) -> stations.addAll(trackGraph.getPoints(EdgePointType.STATION)));
         return stations.stream().map(station -> IntAttached.with((int)station.getBlockEntityPos().getCenter().distanceTo(blockPos.getCenter()), station.name)).toList();
     }).register();
 
@@ -78,7 +78,7 @@ public class ETObserverConditions {
         }
         return false;
     }).icon(AllBlocks.TRAIN_CONTROLS).suggestionFunction((blockPos, player) -> {
-        Collection<Train> trains = Create.RAILWAYS.trains.values();
+        Collection<Train> trains = Create.RAILWAYS.sided(player.level()).trains.values();
         List<IntAttached<String>> suggestions = new ArrayList<>();
         for (Train train : trains) {
             for (Carriage carriage : train.carriages) {
@@ -110,7 +110,7 @@ public class ETObserverConditions {
         }
         return false;
     }).icon(AllBlocks.SEATS.get(DyeColor.RED)).suggestionFunction((blockPos, player) -> {
-        Collection<Train> trains = Create.RAILWAYS.trains.values();
+        Collection<Train> trains = Create.RAILWAYS.sided(player.level()).trains.values();
         List<IntAttached<String>> suggestions = new ArrayList<>();
         for (Train train : trains) {
             for (Carriage carriage : train.carriages) {
@@ -142,7 +142,7 @@ public class ETObserverConditions {
         return false;
     }).icon(AllBlocks.TRACK_STATION).suggestionFunction((blockPos, player) -> {
         HashSet<GlobalStation> stations = new HashSet<>();
-        Create.RAILWAYS.trackNetworks.forEach((uuid, trackGraph) -> stations.addAll(trackGraph.getPoints(EdgePointType.STATION)));
+        Create.RAILWAYS.sided(player.level()).trackNetworks.forEach((uuid, trackGraph) -> stations.addAll(trackGraph.getPoints(EdgePointType.STATION)));
         return stations.stream().map(station -> IntAttached.with((int)station.getBlockEntityPos().getCenter().distanceTo(blockPos.getCenter()), station.name)).toList();
     }).register();
 
@@ -150,7 +150,7 @@ public class ETObserverConditions {
             .buildEntry("train_name", (train, filter) -> stringMatchesRegex(train.name.getString(), filter))
             .icon(Items.NAME_TAG)
             .suggestionFunction((blockPos, player) -> {
-                Collection<Train> trains = Create.RAILWAYS.trains.values();
+                Collection<Train> trains = Create.RAILWAYS.sided(player.level()).trains.values();
                 List<String> names = trains.stream().map(train -> train.name.getString()).toList();
                 return names.stream().sorted().map(name -> IntAttached.with(names.indexOf(name), name)).toList();
             }).register();
