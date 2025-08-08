@@ -1,7 +1,7 @@
 {
   "expandingtechnologies.display_source.light_display" : "Light State",
 
-  "expandingtechnologies.observer_condition.destination": "Current Destination",
+  "expandingtechnologies.observer_condition.destination": "Next Station",
   "expandingtechnologies.observer_condition.manual_control": "Controlled by Player",
   "expandingtechnologies.observer_condition.entity_control": "Controlled by Entity",
   "expandingtechnologies.observer_condition.has_passenger": "Has Passenger",

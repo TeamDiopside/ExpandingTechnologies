@@ -1,12 +1,10 @@
 {
   "variants": {
     "powered=false": {
-      "model": "expandingtechnologies:block/smart_train_observer/off",
-      "uvlock": true
+      "model": "expandingtechnologies:block/smart_train_observer/off"
     },
     "powered=true": {
-      "model": "expandingtechnologies:block/smart_train_observer/on",
-      "uvlock": true
+      "model": "expandingtechnologies:block/smart_train_observer/on"
     }
   }
 }
