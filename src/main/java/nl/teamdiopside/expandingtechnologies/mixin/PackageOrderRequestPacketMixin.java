@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = {PackageOrderRequestPacket.class}, remap = false)
+@Mixin(value = PackageOrderRequestPacket.class, remap = false)
 public class PackageOrderRequestPacketMixin {
 
     public PackageOrderRequestPacketMixin() {}

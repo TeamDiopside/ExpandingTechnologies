@@ -14,10 +14,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.UUID;
 
-@Mixin(value = {Train.class}, remap = false)
+@Mixin(value = Train.class, remap = false)
 public class TrainMixin {
 
-    @Redirect(method = {"tickOccupiedObservers"},
+    @Redirect(method = "tickOccupiedObservers",
             at = @At(value = "INVOKE",
                     target = "Lcom/simibubi/create/content/trains/graph/TrackGraph;getPoint(Lcom/simibubi/create/content/trains/graph/EdgePointType;Ljava/util/UUID;)Lcom/simibubi/create/content/trains/signal/TrackEdgePoint;"
             )

@@ -24,10 +24,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = {SlidingDoorMovementBehaviour.class}, remap = false)
+@Mixin(value = SlidingDoorMovementBehaviour.class, remap = false)
 public abstract class SlidingDoorMovementBehaviourMixin {
 
-    @Redirect(method = {"getDoorFacing"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;m_82399_()Lnet/minecraft/world/phys/Vec3;"))
+    @Redirect(method = "getDoorFacing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;m_82399_()Lnet/minecraft/world/phys/Vec3;"))
     private Vec3 injected(AABB instance, @Local(argsOnly = true) MovementContext context) {
         if (ETConfigs.common().betterContraptionDoorPosition.get() && context.contraption instanceof IBetterContraptionBounds contraption) {
             if (contraption.expandingtechnologies$getBetterBounds() == null) {
@@ -42,7 +42,7 @@ public abstract class SlidingDoorMovementBehaviourMixin {
 
     @Shadow protected abstract Direction getDoorFacing(MovementContext context);
 
-    @Inject(method = {"shouldOpenAt"}, at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "shouldOpenAt", at = @At(value = "HEAD"), cancellable = true)
     private void et$shouldOpenAt(DoorControlBehaviour controller, MovementContext context, CallbackInfoReturnable<Boolean> cir) {
         if (context.contraption.entity instanceof CarriageContraptionEntity cce && cce.getCarriage() != null) {
             Train train = cce.getCarriage().train;

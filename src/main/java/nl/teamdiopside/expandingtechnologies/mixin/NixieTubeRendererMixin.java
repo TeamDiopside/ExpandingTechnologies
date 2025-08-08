@@ -26,11 +26,11 @@ import java.util.Objects;
 import static com.simibubi.create.content.redstone.nixieTube.DoubleFaceAttachedBlock.FACE;
 import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 
-@Mixin(value = {NixieTubeRenderer.class}, remap = false)
+@Mixin(value = NixieTubeRenderer.class, remap = false)
 public class NixieTubeRendererMixin {
     public NixieTubeRendererMixin() {}
 
-    @Inject(method = {"renderSafe(Lcom/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V"}, at = @At(value = "INVOKE", target = "Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;uncenter()Ldev/engine_room/flywheel/lib/transform/Translate;", shift = At.Shift.AFTER))
+    @Inject(method = "renderSafe(Lcom/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At(value = "INVOKE", target = "Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;uncenter()Ldev/engine_room/flywheel/lib/transform/Translate;", shift = At.Shift.AFTER))
     private void et$renderSafe(NixieTubeBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay, CallbackInfo ci) {
         if (Objects.equals(be.getFullText().getString(), "x§") || Objects.equals(be.getFullText().getString(), "§x") || Objects.equals(be.getFullText().getString(), "§§"))
             expandingTechnologies$renderAsLight(be, ms, buffer, light, be.getFullText().getString());

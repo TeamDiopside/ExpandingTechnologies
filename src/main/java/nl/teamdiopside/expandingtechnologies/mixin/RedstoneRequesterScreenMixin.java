@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
-@Mixin(value = {RedstoneRequesterScreen.class}, remap = false)
+@Mixin(value = RedstoneRequesterScreen.class, remap = false)
 public abstract class RedstoneRequesterScreenMixin extends AbstractSimiContainerScreen<RedstoneRequesterMenu> {
 
     public RedstoneRequesterScreenMixin(RedstoneRequesterMenu menu, Inventory inv, Component title) {
@@ -25,7 +25,7 @@ public abstract class RedstoneRequesterScreenMixin extends AbstractSimiContainer
     @Shadow
     private EditBox addressBox;
 
-    @Inject(method = {"m_7286_"}, at = @At(
+    @Inject(method = "m_7286_", at = @At(
             value = "HEAD"
     ))
     private void et$renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY, CallbackInfo ci) {
@@ -34,7 +34,7 @@ public abstract class RedstoneRequesterScreenMixin extends AbstractSimiContainer
         }
     }
 
-    @Inject(method = {"m_7861_"}, at = @At(value = "HEAD"))
+    @Inject(method = "m_7861_", at = @At(value = "HEAD"))
     private void et$removed(CallbackInfo ci) {
         addressBox.setValue(addressBox.getValue().replace(
                 "@s", ETConfigs.common().allowSelfAddress.get() ? this.getMenu().player.getName().getString() : "@s"

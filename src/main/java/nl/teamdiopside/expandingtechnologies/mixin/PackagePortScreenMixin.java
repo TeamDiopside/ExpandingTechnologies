@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = {PackagePortScreen.class}, remap = false)
+@Mixin(value = PackagePortScreen.class, remap = false)
 public abstract class PackagePortScreenMixin extends AbstractSimiContainerScreen<PackagePortMenu> {
     public PackagePortScreenMixin(PackagePortMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
@@ -23,7 +23,7 @@ public abstract class PackagePortScreenMixin extends AbstractSimiContainerScreen
     @Shadow
     private EditBox addressBox;
 
-    @Inject(method = {"m_7286_"}, at = @At(
+    @Inject(method = "m_7286_", at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/client/gui/components/EditBox;m_93696_()Z"
     ))
@@ -33,7 +33,7 @@ public abstract class PackagePortScreenMixin extends AbstractSimiContainerScreen
         }
     }
 
-    @Inject(method = {"m_7861_"}, at = @At(value = "HEAD"))
+    @Inject(method = "m_7861_", at = @At(value = "HEAD"))
     private void et$removed(CallbackInfo ci) {
         addressBox.setValue(addressBox.getValue().replace(
                 "@s", ETConfigs.common().allowSelfAddress.get() ? this.getMenu().player.getName().getString() : "@s"
