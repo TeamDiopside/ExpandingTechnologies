@@ -1,7 +1,6 @@
 package nl.teamdiopside.expandingtechnologies.mixin;
 
 import com.simibubi.create.content.contraptions.Contraption;
-import com.simibubi.create.content.contraptions.ContraptionWorld;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.phys.AABB;
@@ -30,8 +29,6 @@ public class ContraptionMixin implements IBetterContraptionBounds {
 
     @Shadow
     protected Map<BlockPos, StructureTemplate.StructureBlockInfo> blocks;
-
-    @Shadow protected ContraptionWorld world;
 
     @Override
     public void expandingtechnologies$calculateBetterBounds() {

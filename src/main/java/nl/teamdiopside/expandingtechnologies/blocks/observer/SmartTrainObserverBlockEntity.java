@@ -1,6 +1,7 @@
 package nl.teamdiopside.expandingtechnologies.blocks.observer;
 
 import com.mojang.datafixers.util.Pair;
+import com.simibubi.create.compat.computercraft.ComputerCraftProxy;
 import com.simibubi.create.content.contraptions.StructureTransform;
 import com.simibubi.create.content.trains.observer.TrackObserver;
 import com.simibubi.create.content.trains.observer.TrackObserverBlockEntity;
@@ -38,6 +39,7 @@ public class SmartTrainObserverBlockEntity extends TrackObserverBlockEntity impl
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         behaviours.add(this.smartEdgePoint = new TrackTargetingBehaviour<>(this, ETEdgePointTypes.SMART_OBSERVER));
+        behaviours.add(this.computerBehaviour = ComputerCraftProxy.behaviour(this));
     }
 
     public ObserverCondition getCondition() {
