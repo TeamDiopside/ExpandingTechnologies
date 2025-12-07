@@ -20,7 +20,7 @@ import java.util.Objects;
 public class NixieTubeMixin {
     public NixieTubeMixin() {}
 
-    @Inject(method = "m_6227_", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "use", at = @At("HEAD"), cancellable = true, remap = true)
     private void et$use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray, CallbackInfoReturnable<InteractionResult> cir) {
         String help = ((NixieTubeBlockEntity) Objects.requireNonNull(world.getBlockEntity(pos))).getFullText().getString();
         if (help.equals("x§") || help.equals("§x") || help.equals("§§")) {

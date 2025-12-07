@@ -87,6 +87,7 @@ minecraft {
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'mixin.debug.export', 'true'
             property 'mixin.env.remapRefMap', 'true'
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
 
             mods {
                 "${mod_id}" {
@@ -157,13 +158,15 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation "dev.architectury:architectury-forge:${architectury_version}"
+    implementation(fg.deobf("dev.architectury:architectury-forge:${architectury_version}"))
 
-    implementation("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
-    implementation("dev.engine-room.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
-    implementation("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
-    implementation("com.tterrag.registrate:Registrate:${registrate_version}")
-    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
+    implementation(fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false })
+    implementation(fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}"))
+    compileOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-api-${minecraft_version}:${flywheel_version}"))
+    runtimeOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}"))
+    implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

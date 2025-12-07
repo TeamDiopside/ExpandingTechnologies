@@ -108,10 +108,10 @@ public class SmartTrainObserverScreen extends AbstractSimiContainerScreen<SmartT
             // We'll also misuse the DestinationSuggestions to just be any suggestion :)
             this.regexSuggestions = new DestinationSuggestions(this.minecraft, this, editBox, this.font, this.suggestions, false, this.topPos - 7);
             this.regexSuggestions.setAllowSuggestions(true);
-            this.regexSuggestions.m_93881_();
+            this.regexSuggestions.updateCommandInfo();
 
             editBox.setResponder(filter -> {
-                this.regexSuggestions.m_93881_();
+                this.regexSuggestions.updateCommandInfo();
                 this.filter = filter;
             });
         });

@@ -27,7 +27,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = SlidingDoorMovementBehaviour.class, remap = false)
 public abstract class SlidingDoorMovementBehaviourMixin {
 
-    @Redirect(method = "getDoorFacing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;m_82399_()Lnet/minecraft/world/phys/Vec3;"))
+    @Redirect(method = "getDoorFacing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;getCenter()Lnet/minecraft/world/phys/Vec3;"), remap = true)
     private Vec3 injected(AABB instance, @Local(argsOnly = true) MovementContext context) {
         if (ETConfigs.common().betterContraptionDoorPosition.get() && context.contraption instanceof IBetterContraptionBounds contraption) {
             if (contraption.expandingtechnologies$getBetterBounds() == null) {

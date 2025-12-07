@@ -25,16 +25,16 @@ public abstract class RedstoneRequesterScreenMixin extends AbstractSimiContainer
     @Shadow
     private EditBox addressBox;
 
-    @Inject(method = "m_7286_", at = @At(
+    @Inject(method = "renderBg", at = @At(
             value = "HEAD"
-    ))
+    ), remap = true)
     private void et$renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY, CallbackInfo ci) {
         if (!addressBox.isFocused() && addressBox.getValue().contains("@s") && ETConfigs.common().allowSelfAddress.get()) {
             addressBox.setValue(addressBox.getValue().replace("@s", this.getMenu().player.getName().getString()));
         }
     }
 
-    @Inject(method = "m_7861_", at = @At(value = "HEAD"))
+    @Inject(method = "removed", at = @At(value = "HEAD"), remap = true)
     private void et$removed(CallbackInfo ci) {
         addressBox.setValue(addressBox.getValue().replace(
                 "@s", ETConfigs.common().allowSelfAddress.get() ? this.getMenu().player.getName().getString() : "@s"
