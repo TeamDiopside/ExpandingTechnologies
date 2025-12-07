@@ -28,7 +28,7 @@ public abstract class StationScreenMixin extends AbstractStationScreen {
         super(be, station);
     }
 
-    @Redirect(method = "m_7856_", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/decoration/slidingDoor/DoorControl;createWidget(IILjava/util/function/Consumer;Lcom/simibubi/create/content/decoration/slidingDoor/DoorControl;)Lnet/createmod/catnip/data/Pair;"))
+    @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/decoration/slidingDoor/DoorControl;createWidget(IILjava/util/function/Consumer;Lcom/simibubi/create/content/decoration/slidingDoor/DoorControl;)Lnet/createmod/catnip/data/Pair;"), remap = true)
     private Pair<ScrollInput, Label> injected(int x, int y, Consumer<DoorControl> callback, DoorControl initial) {
         if (blockEntity != null) {
             Level level = blockEntity.getLevel();
