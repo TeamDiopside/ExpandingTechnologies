@@ -13,6 +13,7 @@
     "NixieTubeRendererMixin",
     "NoteBlockMixin",
     "PackageOrderRequestPacketMixin",
+    "PackagerLinkBlockEntityMixin",
     "RedstoneMixin",
     "SlidingDoorMovementBehaviourMixin",
     "StockTickerBlockEntityAccessor",
