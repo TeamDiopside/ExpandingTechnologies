@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class ETEdgePointTypes {
-    public static final HashMap<EdgePointType<?>, PartialModel> CUSTOM_EDGE_POINT_PARTIALS = new HashMap<>();
+    private static final HashMap<EdgePointType<?>, PartialModel> CUSTOM_EDGE_POINT_PARTIALS = new HashMap<>();
     public static final EdgePointType<SmartTrainObserver> SMART_OBSERVER = register(ResourceLocation.fromNamespaceAndPath(ExpandingTechnologies.MODID, "smart_observer"), SmartTrainObserver::new, AllPartialModels.TRACK_OBSERVER_OVERLAY);
 
     private static <T extends TrackEdgePoint> EdgePointType<T> register(ResourceLocation id, Supplier<T> factory, PartialModel partialModel) {
@@ -40,6 +40,13 @@ public class ETEdgePointTypes {
         return edgePointType;
     }
 
+    public static PartialModel getCustomPartial(EdgePointType<?> edgePointType) {
+        return CUSTOM_EDGE_POINT_PARTIALS.get(edgePointType);
+    }
+
+    public static boolean containsCustomPartial(EdgePointType<?> edgePointType) {
+        return CUSTOM_EDGE_POINT_PARTIALS.containsKey(edgePointType);
+    }
 
     @OnlyIn(Dist.CLIENT)
     public static void render(LevelAccessor level, BlockPos pos, Direction.AxisDirection direction, BezierTrackPointLocation bezier, PoseStack ms, MultiBufferSource buffer, EdgePointType<?> type, float scale) {
@@ -50,6 +57,8 @@ public class ETEdgePointTypes {
 
         ms.pushPose();
         PoseTransformStack msr = TransformStack.of(ms);
+        // There is no reason for the type to be there, it just returns the affiliated partial model, which we don't use.
+        // So we picked station :)
         track.prepareTrackOverlay(msr, level, pos, trackState, bezier, direction, TrackTargetingBehaviour.RenderedTrackOverlayType.STATION);
         PartialModel partial = CUSTOM_EDGE_POINT_PARTIALS.getOrDefault(type, null);
         if (partial != null) {

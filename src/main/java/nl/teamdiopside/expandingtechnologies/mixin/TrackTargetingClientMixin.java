@@ -26,7 +26,7 @@ public class TrackTargetingClientMixin {
             )
     )
     private static void inject(LevelAccessor level, BlockPos pos, Direction.AxisDirection direction, BezierTrackPointLocation bezier, PoseStack ms, MultiBufferSource buffer, int light, int overlay, TrackTargetingBehaviour.RenderedTrackOverlayType type, float scale) {
-        if (ETEdgePointTypes.CUSTOM_EDGE_POINT_PARTIALS.containsKey(lastType)) {
+        if (ETEdgePointTypes.containsCustomPartial(lastType)) {
             ETEdgePointTypes.render(level, pos, direction, bezier, ms, buffer, lastType, scale);
             return;
         }
