@@ -26,6 +26,8 @@ public class TrainMixin {
         TrackEdgePoint observer = instance.getPoint(type, id);
         if (observer != null) return observer;
         SmartTrainObserver smartTrainObserver = instance.getPoint(ETEdgePointTypes.SMART_OBSERVER, id);
+        // Observer destroyed, return null without setting level so Train can continue
+        if (smartTrainObserver == null) return null;
         smartTrainObserver.setLevel(level);
         return smartTrainObserver;
     }
