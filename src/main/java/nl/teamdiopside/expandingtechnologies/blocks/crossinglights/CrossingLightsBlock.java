@@ -1,5 +1,7 @@
 package nl.teamdiopside.expandingtechnologies.blocks.crossinglights;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.redstone.displayLink.DisplayLinkBlock;
 import com.simibubi.create.content.redstone.displayLink.DisplayLinkBlockEntity;
@@ -16,6 +18,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -27,6 +30,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 public class CrossingLightsBlock extends HorizontalDirectionalBlock implements IBE<CrossingLightsBlockEntity>, IWrenchable, RedstoneConnectable {
+
+    public static MapCodec<CrossingLightsBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            BlockBehaviour.propertiesCodec()
+    ).apply(instance, CrossingLightsBlock::new));
 
     public static final IntegerProperty STATE = IntegerProperty.create("state", 0, 2);
 
@@ -112,5 +119,10 @@ public class CrossingLightsBlock extends HorizontalDirectionalBlock implements I
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return getBlockEntityType().create(blockPos, blockState);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 }

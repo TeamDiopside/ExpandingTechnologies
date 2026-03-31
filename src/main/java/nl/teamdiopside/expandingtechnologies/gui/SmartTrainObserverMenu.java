@@ -3,19 +3,19 @@ package nl.teamdiopside.expandingtechnologies.gui;
 import com.mojang.datafixers.util.Pair;
 import com.simibubi.create.foundation.gui.menu.GhostItemMenu;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import nl.teamdiopside.expandingtechnologies.blocks.observer.ObserverCondition;
 import org.jetbrains.annotations.NotNull;
 
 public class SmartTrainObserverMenu extends GhostItemMenu<Pair<BlockPos, ObserverCondition>> {
 
-    public SmartTrainObserverMenu(MenuType<?> type, int id, Inventory inv, FriendlyByteBuf extraData) {
+    public SmartTrainObserverMenu(MenuType<?> type, int id, Inventory inv, RegistryFriendlyByteBuf extraData) {
         super(type, id, inv, extraData);
     }
 
@@ -34,9 +34,9 @@ public class SmartTrainObserverMenu extends GhostItemMenu<Pair<BlockPos, Observe
     }
 
     @Override
-    protected Pair<BlockPos, ObserverCondition> createOnClient(FriendlyByteBuf friendlyByteBuf) {
-        BlockPos pos = friendlyByteBuf.readBlockPos();
-        ObserverCondition condition = ObserverCondition.fromBuf(friendlyByteBuf);
+    protected Pair<BlockPos, ObserverCondition> createOnClient(RegistryFriendlyByteBuf extraData) {
+        BlockPos pos = extraData.readBlockPos();
+        ObserverCondition condition = ObserverCondition.fromBuf(extraData);
         return new Pair<>(pos, condition);
     }
 
@@ -49,7 +49,7 @@ public class SmartTrainObserverMenu extends GhostItemMenu<Pair<BlockPos, Observe
             }
 
             @Override
-            public boolean mayPickup(Player playerIn) {
+            public boolean mayPickup(@NotNull Player playerIn) {
                 return false;
             }
 

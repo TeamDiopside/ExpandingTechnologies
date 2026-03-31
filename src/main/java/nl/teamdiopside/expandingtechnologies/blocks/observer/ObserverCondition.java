@@ -3,11 +3,22 @@ package nl.teamdiopside.expandingtechnologies.blocks.observer;
 import com.simibubi.create.content.trains.entity.Train;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import nl.teamdiopside.expandingtechnologies.registry.ETObserverConditions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public record ObserverCondition(@NotNull ETObserverConditions.ObserverConditionRegistryEntry entry, @NotNull String filter, boolean inverted) {
+
+    public static final StreamCodec<FriendlyByteBuf, ObserverCondition> STREAM_CODEC  = new StreamCodec<>() {
+        public @NotNull ObserverCondition decode(@NotNull FriendlyByteBuf byteBuf) {
+            return fromBuf(byteBuf);
+        }
+
+        public void encode(@NotNull FriendlyByteBuf byteBuf, ObserverCondition condition) {
+            condition.toBuf(byteBuf);
+        }
+    };
 
     public ObserverCondition(@NotNull ETObserverConditions.ObserverConditionRegistryEntry entry, @Nullable String filter, boolean inverted) {
         this.entry = entry;
@@ -23,7 +34,7 @@ public record ObserverCondition(@NotNull ETObserverConditions.ObserverConditionR
         return ETObserverConditions.DESTINATION_CONDITION.buildCondition("", false);
     }
 
-    public static ObserverCondition fromBuf(FriendlyByteBuf buf) {
+    public static @NotNull ObserverCondition fromBuf(FriendlyByteBuf buf) {
         String id = buf.readUtf();
         String filter = buf.readUtf();
         boolean inverted = buf.readBoolean();

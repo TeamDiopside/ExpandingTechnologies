@@ -26,7 +26,7 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 public class ETBlocks {
     private static final CreateRegistrate REGISTRATE = ExpandingTechnologies.registrate();
 
-    public static final RegistryEntry<LightDisplaySource> LIGHT_DISPLAY = REGISTRATE.displaySource("light_display", LightDisplaySource::new).register();
+    public static final RegistryEntry<DisplaySource, LightDisplaySource> LIGHT_DISPLAY = REGISTRATE.displaySource("light_display", LightDisplaySource::new).register();
 
     public static final BlockEntry<CrossingLightsBlock> RAILROAD_LIGHT_CONTROLLER = REGISTRATE.block("railroad_light_controller", CrossingLightsBlock::new)
             .initialProperties(SharedProperties::softMetal)

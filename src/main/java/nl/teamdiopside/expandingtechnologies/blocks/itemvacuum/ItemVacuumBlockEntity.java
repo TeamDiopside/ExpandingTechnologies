@@ -9,6 +9,7 @@ import com.simibubi.create.foundation.item.SmartInventory;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -20,10 +21,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import nl.teamdiopside.expandingtechnologies.registry.ETBlockEntities;
 
 import java.util.List;
 
@@ -83,15 +83,15 @@ public class ItemVacuumBlockEntity extends KineticBlockEntity {
     }
 
     @Override
-    protected void write(CompoundTag compound, boolean clientPacket) {
-        super.write(compound, clientPacket);
-        compound.put("Inventory", this.inventory.serializeNBT());
+    protected void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
+        super.write(compound, registries, clientPacket);
+        compound.put("Inventory", this.inventory.serializeNBT(registries));
     }
 
     @Override
-    protected void read(CompoundTag compound, boolean clientPacket) {
-        super.read(compound, clientPacket);
-        this.inventory.deserializeNBT(compound.getCompound("Inventory"));
+    protected void read(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
+        super.read(compound, registries, clientPacket);
+        this.inventory.deserializeNBT(registries, compound.getCompound("Inventory"));
     }
 
 
@@ -136,24 +136,26 @@ public class ItemVacuumBlockEntity extends KineticBlockEntity {
         return stackInSlot.isEmpty() || (stackInSlot.getCount() < inventory.getSlotLimit(slot) && stackInSlot.getItem() == itemToPut);
     }
 
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (isItemHandlerCap(cap)) {
-            if (side == Direction.DOWN) {
-                return LazyOptional.of(() -> itemHandler).cast();
-            }
-            String caller = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
-                    .walk(frames -> frames
-                            .skip(2)
-                            .findFirst()
-                            .map(StackWalker.StackFrame::getClassName)
-                            .orElse("Unknown")
-                    );
-            if (caller.contains("jade")) {
-                return LazyOptional.of(() -> itemHandler).cast();
-            }
-        }
-        return super.getCapability(cap, side);
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ETBlockEntities.ITEM_VACUUM.get(),
+                (be, context) -> {
+                    if (context == Direction.DOWN) {
+                        return be.itemHandler;
+                    }
+
+                    String caller = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
+                            .walk(frames -> frames
+                                    .skip(4)
+                                    .findFirst()
+                                    .map(StackWalker.StackFrame::getClassName)
+                                    .orElse("Unknown")
+                            );
+
+                    return caller.contains("jade") ? be.itemHandler : null;
+                }
+        );
     }
 
     public int speedToRange(float speed) {

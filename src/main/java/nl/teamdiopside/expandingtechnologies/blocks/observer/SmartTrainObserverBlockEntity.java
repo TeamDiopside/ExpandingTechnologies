@@ -8,6 +8,7 @@ import com.simibubi.create.content.trains.observer.TrackObserverBlockEntity;
 import com.simibubi.create.content.trains.track.TrackTargetingBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
@@ -18,6 +19,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import nl.teamdiopside.expandingtechnologies.gui.SmartTrainObserverMenu;
 import nl.teamdiopside.expandingtechnologies.registry.ETEdgePointTypes;
 import nl.teamdiopside.expandingtechnologies.registry.ETMenuTypes;
@@ -51,14 +53,14 @@ public class SmartTrainObserverBlockEntity extends TrackObserverBlockEntity impl
     }
 
     @Override
-    protected void write(CompoundTag tag, boolean clientPacket) {
-        super.write(tag, clientPacket);
+    protected void write(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
+        super.write(tag, registries, clientPacket);
         condition.toTag(tag);
     }
 
     @Override
-    protected void read(CompoundTag tag, boolean clientPacket) {
-        super.read(tag, clientPacket);
+    protected void read(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
+        super.read(tag, registries, clientPacket);
         setCondition(ObserverCondition.fromTag(tag));
     }
 
@@ -69,7 +71,7 @@ public class SmartTrainObserverBlockEntity extends TrackObserverBlockEntity impl
 
     @Override
     protected AABB createRenderBoundingBox() {
-        return (new AABB(this.worldPosition, this.smartEdgePoint.getGlobalPosition())).inflate(2.0);
+        return (new AABB(Vec3.atLowerCornerOf(this.worldPosition), Vec3.atLowerCornerOf(this.smartEdgePoint.getGlobalPosition()))).inflate(2.0);
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.simibubi.create.foundation.gui.widget.*;
 import net.createmod.catnip.data.IntAttached;
 import net.createmod.catnip.gui.UIRenderHelper;
 import net.createmod.catnip.gui.element.GuiGameElement;
+import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
@@ -20,7 +21,6 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import nl.teamdiopside.expandingtechnologies.mixin.DestinationSuggestionsAccessor;
-import nl.teamdiopside.expandingtechnologies.net.ETNetwork;
 import nl.teamdiopside.expandingtechnologies.net.packet.SmartTrainObserverConfigurePacket;
 import nl.teamdiopside.expandingtechnologies.registry.ETBlocks;
 import nl.teamdiopside.expandingtechnologies.registry.ETObserverConditions;
@@ -199,6 +199,6 @@ public class SmartTrainObserverScreen extends AbstractSimiContainerScreen<SmartT
     public void removed() {
         // Remove GUI and update condition
         super.removed();
-        ETNetwork.sendToServer(new SmartTrainObserverConfigurePacket(this.menu.contentHolder.getFirst(), this.currentEntry.buildCondition(this.filter, this.invertButton.green)));
+        CatnipServices.NETWORK.sendToServer(new SmartTrainObserverConfigurePacket(this.menu.contentHolder.getFirst(), this.currentEntry.buildCondition(this.filter, this.invertButton.green)));
     }
 }

@@ -3,34 +3,34 @@ package nl.teamdiopside.expandingtechnologies.net.packet;
 import com.simibubi.create.foundation.networking.BlockEntityConfigurationPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.server.level.ServerPlayer;
 import nl.teamdiopside.expandingtechnologies.blocks.observer.ObserverCondition;
 import nl.teamdiopside.expandingtechnologies.blocks.observer.SmartTrainObserverBlockEntity;
+import nl.teamdiopside.expandingtechnologies.registry.ETPackets;
 
 public class SmartTrainObserverConfigurePacket extends BlockEntityConfigurationPacket<SmartTrainObserverBlockEntity> {
 
-    private ObserverCondition condition;
+    public static final StreamCodec<FriendlyByteBuf, SmartTrainObserverConfigurePacket> STREAM_CODEC = StreamCodec.composite(
+            BlockPos.STREAM_CODEC, packet -> packet.pos,
+            ObserverCondition.STREAM_CODEC, packet -> packet.condition,
+            SmartTrainObserverConfigurePacket::new
+    );
+
+    private final ObserverCondition condition;
 
     public SmartTrainObserverConfigurePacket(BlockPos pos, ObserverCondition condition) {
         super(pos);
         this.condition = condition;
     }
 
-    public SmartTrainObserverConfigurePacket(FriendlyByteBuf friendlyByteBuf) {
-        super(friendlyByteBuf);
+    @Override
+    public PacketTypeProvider getTypeProvider() {
+        return ETPackets.CONFIGURE_SMART_TRAIN_OBSERVER;
     }
 
     @Override
-    protected void writeSettings(FriendlyByteBuf friendlyByteBuf) {
-        condition.toBuf(friendlyByteBuf);
-    }
-
-    @Override
-    protected void readSettings(FriendlyByteBuf friendlyByteBuf) {
-        this.condition = ObserverCondition.fromBuf(friendlyByteBuf);
-    }
-
-    @Override
-    protected void applySettings(SmartTrainObserverBlockEntity smartTrainObserverBlockEntity) {
+    protected void applySettings(ServerPlayer player, SmartTrainObserverBlockEntity smartTrainObserverBlockEntity) {
         if (condition == null) return;
         smartTrainObserverBlockEntity.setCondition(condition);
     }

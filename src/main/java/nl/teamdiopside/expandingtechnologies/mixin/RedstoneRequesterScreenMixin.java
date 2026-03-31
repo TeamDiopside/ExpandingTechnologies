@@ -1,10 +1,10 @@
 package nl.teamdiopside.expandingtechnologies.mixin;
 
+import com.simibubi.create.content.logistics.AddressEditBox;
 import com.simibubi.create.content.logistics.redstoneRequester.RedstoneRequesterMenu;
 import com.simibubi.create.content.logistics.redstoneRequester.RedstoneRequesterScreen;
 import com.simibubi.create.foundation.gui.menu.AbstractSimiContainerScreen;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import nl.teamdiopside.expandingtechnologies.registry.ETConfigs;
@@ -23,7 +23,7 @@ public abstract class RedstoneRequesterScreenMixin extends AbstractSimiContainer
     }
 
     @Shadow
-    private EditBox addressBox;
+    private AddressEditBox addressBox;
 
     @Inject(method = "renderBg", at = @At(
             value = "HEAD"

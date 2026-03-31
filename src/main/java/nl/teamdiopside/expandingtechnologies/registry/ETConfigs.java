@@ -24,29 +24,26 @@
 
 package nl.teamdiopside.expandingtechnologies.registry;
 
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-
+import com.simibubi.create.api.stress.BlockStressValues;
+import net.createmod.catnip.config.ConfigBase;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import nl.teamdiopside.expandingtechnologies.config.ETClient;
 import nl.teamdiopside.expandingtechnologies.config.ETCommon;
 import nl.teamdiopside.expandingtechnologies.config.ETServer;
 import nl.teamdiopside.expandingtechnologies.config.ETStress;
 import org.apache.commons.lang3.tuple.Pair;
 
-import com.simibubi.create.api.stress.BlockStressValues;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
 
-import net.createmod.catnip.config.ConfigBase;
-
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
-
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber()
 public class ETConfigs {
 
     private static final Map<ModConfig.Type, ConfigBase> CONFIGS = new EnumMap<>(ModConfig.Type.class);
@@ -72,7 +69,7 @@ public class ETConfigs {
     }
 
     private static <T extends ConfigBase> T register(Supplier<T> factory, ModConfig.Type side) {
-        Pair<T, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(builder -> {
+        Pair<T, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(builder -> {
             T config = factory.get();
             config.registerAll(builder);
             return config;
@@ -84,7 +81,7 @@ public class ETConfigs {
         return config;
     }
 
-    public static void register(ModLoadingContext context) {
+    public static void register(ModContainer context) {
         client = register(ETClient::new, ModConfig.Type.CLIENT);
         common = register(ETCommon::new, ModConfig.Type.COMMON);
         server = register(ETServer::new, ModConfig.Type.SERVER);

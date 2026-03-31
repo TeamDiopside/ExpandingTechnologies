@@ -6,21 +6,16 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import dev.architectury.platform.forge.EventBuses;
 import net.createmod.catnip.lang.FontHelper;
-import net.createmod.ponder.foundation.PonderIndex;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import nl.teamdiopside.expandingtechnologies.net.ETNetwork;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import nl.teamdiopside.expandingtechnologies.registry.*;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ExpandingTechnologies.MODID)
 public class ExpandingTechnologies {
 
@@ -34,35 +29,24 @@ public class ExpandingTechnologies {
                     .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
             );
 
-    public ExpandingTechnologies() {
-        ModLoadingContext modLoadingContext = ModLoadingContext.get();
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        EventBuses.registerModEventBus(ExpandingTechnologies.MODID, modEventBus);
+    public ExpandingTechnologies(IEventBus modEventBus, ModContainer modContainer) {
+        // Prevent automatic adding in search tab
+        ExpandingTechnologies.registrate().defaultCreativeTab((ResourceKey<CreativeModeTab>) null);
+        ExpandingTechnologies.registrate().setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
 
-        ETNetwork.register();
         ETPartialModels.register();
         ETBlocks.register();
         ETObserverConditions.register();
         ETBlockEntities.register();
         ETMenuTypes.register();
         ETSounds.register();
+        ETPackets.register();
 
-        ExpandingTechnologies.registrate().setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
-        ExpandingTechnologies.registrate().registerEventListeners(modEventBus);
-
-        ETConfigs.register(modLoadingContext);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> registerClient(modEventBus, modEventBus));
+        ETConfigs.register(modContainer);
     }
 
     public static CreateRegistrate registrate() {
         return REGISTRATE;
-    }
-
-    public static void registerClient(IEventBus modEventBus, IEventBus forgeEventBus) {
-        PonderIndex.addPlugin(new ETPonder());
     }
 }

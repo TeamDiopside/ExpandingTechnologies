@@ -8,7 +8,7 @@ import nl.teamdiopside.expandingtechnologies.util.ETUtil;
 
 public class ETSounds {
 
-    public static final RegistryEntry<SoundEvent> CROSSING_BELL = ExpandingTechnologies.registrate()
+    public static final RegistryEntry<SoundEvent, SoundEvent> CROSSING_BELL = ExpandingTechnologies.registrate()
             .simple("crossing_bell", Registries.SOUND_EVENT, () -> SoundEvent.createVariableRangeEvent(ETUtil.resourceLocation("crossing_bell")));
 
     public static void register() {}

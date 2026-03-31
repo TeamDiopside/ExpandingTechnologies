@@ -6,6 +6,7 @@ import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 import nl.teamdiopside.expandingtechnologies.ExpandingTechnologies;
 import nl.teamdiopside.expandingtechnologies.ponder.CrossingLightsPonder;
 import nl.teamdiopside.expandingtechnologies.ponder.DoorControllerPonder;
@@ -19,7 +20,7 @@ public class ETPonder implements PonderPlugin {
 
     @Override
     public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> helper) {
-        PonderSceneRegistrationHelper<ItemProviderEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
+        PonderSceneRegistrationHelper<ItemProviderEntry<?, ?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
         HELPER.forComponents(ETBlocks.RAILROAD_LIGHT_CONTROLLER)
                 .addStoryBoard("railroad_lights", CrossingLightsPonder::constructing)
                 .addStoryBoard("practical_example", CrossingLightsPonder::practicalExample);
@@ -36,7 +37,7 @@ public class ETPonder implements PonderPlugin {
 
     @Override
     public void registerTags(PonderTagRegistrationHelper<ResourceLocation> helper) {
-        PonderTagRegistrationHelper<RegistryEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
+        PonderTagRegistrationHelper<RegistryEntry<? extends ItemLike, ?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
         HELPER.addToTag(DISPLAY_SOURCES).add(ETBlocks.RAILROAD_LIGHT_CONTROLLER).add(ETBlocks.SMART_TRAIN_OBSERVER);
         HELPER.addToTag(KINETIC_APPLIANCES).add(ETBlocks.ITEM_VACUUM);
         HELPER.addToTag(TRAIN_RELATED).add(ETBlocks.SMART_TRAIN_OBSERVER);
